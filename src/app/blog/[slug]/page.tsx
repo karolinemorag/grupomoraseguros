@@ -1,3 +1,4 @@
+export const runtime = "edge";
 
 import { notFound } from "next/navigation";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
@@ -47,7 +48,7 @@ export default function BlogPostPage({ params }: Props) {
           day: "numeric",
           month: "long",
           year: "numeric",
-        })} · ${post.readTime}`}
+        })} Â· ${post.readTime}`}
       />
 
       <SectionWrapper background="white">
@@ -69,7 +70,7 @@ export default function BlogPostPage({ params }: Props) {
       </SectionWrapper>
 
       <SectionWrapper background="light">
-        <ContactForm title="¿Te ha surgido alguna duda?" subtitle="Estaremos encantados de ayudarte. Déjanos tus datos y te contactamos." />
+        <ContactForm title="Â¿Te ha surgido alguna duda?" subtitle="Estaremos encantados de ayudarte. DÃ©janos tus datos y te contactamos." />
       </SectionWrapper>
     </>
   );

@@ -2,10 +2,10 @@ export const siteConfig = {
   name: "Grupo Mora",
   tagline: "Agencia exclusiva de seguros",
   location: "Madrid",
-  telefono: process.env.NEXT_PUBLIC_TELEFONO ?? "[Teléfono]",
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "[WhatsApp]",
-  email: process.env.NEXT_PUBLIC_EMAIL ?? "[Email]",
-  direccion: process.env.NEXT_PUBLIC_DIRECCION ?? "[Dirección en Madrid]",
+  telefono: "+34 655 172 622",
+  whatsapp: "+34655172622",
+  email: "kmoragarcia@tuasesorasisa.es",
+  direccion: "Avenida Miguel Delibes 15, Madrid, 28052",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://grupomora.es",
   seo: {
     defaultTitle:

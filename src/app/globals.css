@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-playfair: "Playfair Display", serif;
+    --font-inter: "Inter", sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body text-gray-dark antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-navy;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-navy {
+    @apply btn-primary bg-navy text-white hover:bg-navy-light focus:ring-navy;
+  }
+
+  .btn-gold {
+    @apply btn-primary bg-gold text-white hover:bg-gold-dark focus:ring-gold;
+  }
+
+  .btn-trust {
+    @apply btn-primary bg-trust text-white hover:bg-trust-dark focus:ring-trust;
+  }
+
+  .btn-outline-navy {
+    @apply btn-primary border-2 border-navy text-navy hover:bg-navy hover:text-white focus:ring-navy;
+  }
+
+  .btn-outline-white {
+    @apply btn-primary border-2 border-white text-white hover:bg-white hover:text-navy focus:ring-white;
+  }
+
+  .container-section {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-light;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-navy/30 hover:bg-navy/50;
+}

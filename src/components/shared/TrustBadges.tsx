@@ -32,7 +32,7 @@ export default function TrustBadges({
         <div
           key={badge}
           className={cn(
-            "flex items-center gap-3 rounded-lg p-4",
+            "flex items-center gap-3 rounded-2xl p-4",
             variant === "light"
               ? "bg-navy/5 text-navy"
               : "bg-white/10 text-white"
@@ -42,7 +42,7 @@ export default function TrustBadges({
           <div
             className={cn(
               "flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full",
-              variant === "light" ? "bg-trust/10 text-trust" : "bg-gold/20 text-gold"
+              variant === "light" ? "bg-trust/10 text-[#25D366]" : "bg-gold/20 text-gold"
             )}
           >
             <Check className="h-4 w-4" aria-hidden="true" />

@@ -22,22 +22,21 @@ export default function ServiceCard({
   return (
     <article
       className={cn(
-        "group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 sm:p-8",
+        "group relative overflow-hidden rounded-3xl border border-gray-100 bg-white p-8 sm:p-10 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-2",
         className
       )}
     >
-      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-navy/5 text-navy">
+      <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-navy/5 text-navy">
         {icon}
       </div>
-      <h3 className="font-heading text-xl font-bold text-navy">{title}</h3>
-      <p className="mt-2 text-gray-dark/80">{description}</p>
+      <h3 className="font-playfair text-xl font-bold text-navy">{title}</h3>
+      <p className="mt-3 leading-relaxed text-gray-dark/70">{description}</p>
       <Link
         href={href}
-        className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-gold transition-colors hover:text-gold-dark"
+        className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-navy transition-all hover:text-gold hover:gap-2"
         aria-label={`Saber más sobre ${title}`}
       >
-        Saber más
-        <ArrowRight className="h-4 w-4" aria-hidden="true" />
+        Más información →
       </Link>
     </article>
   );

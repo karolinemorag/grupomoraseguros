@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, Calendar } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
@@ -14,7 +15,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 10);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -38,38 +39,28 @@ export default function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        scrolled
-          ? "bg-white/95 shadow-sm backdrop-blur-md"
-          : "bg-transparent"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white border-b border-gray-100",
+        scrolled && "shadow-sm"
       )}
     >
       <nav
-        className="container-section flex h-16 items-center justify-between sm:h-20"
+        className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 sm:h-20"
         aria-label="Navegación principal"
       >
         {/* Logo */}
         <Link
           href="/"
-          className="flex flex-col leading-tight"
+          className="flex items-center gap-3"
           aria-label="Grupo Mora - Inicio"
         >
-          <span
-            className={cn(
-              "font-heading text-xl font-bold transition-colors sm:text-2xl",
-              scrolled ? "text-navy" : "text-white"
-            )}
-          >
-            Grupo Mora
-          </span>
-          <span
-            className={cn(
-              "text-xs transition-colors",
-              scrolled ? "text-navy/60" : "text-white/70"
-            )}
-          >
-            Agencia exclusiva de seguros · Madrid
-          </span>
+          <Image
+            src="/logo-grupo-mora.jpg"
+            alt="Grupo Mora - Agencia exclusiva de seguros"
+            width={160}
+            height={48}
+            className="h-[38px] w-auto object-contain md:h-[48px]"
+            priority
+          />
         </Link>
 
         {/* Desktop Nav */}
@@ -83,12 +74,8 @@ export default function Navbar() {
                 className={cn(
                   "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                   isActive
-                    ? scrolled
-                      ? "bg-navy/10 text-navy"
-                      : "bg-white/20 text-white"
-                    : scrolled
-                    ? "text-navy/70 hover:bg-navy/5 hover:text-navy"
-                    : "text-white/80 hover:bg-white/10 hover:text-white"
+                    ? "bg-navy/10 text-navy"
+                    : "text-navy/70 hover:bg-navy/5 hover:text-navy"
                 )}
                 aria-current={isActive ? "page" : undefined}
               >
@@ -109,12 +96,7 @@ export default function Navbar() {
         {/* Mobile Hamburger */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className={cn(
-            "flex h-10 w-10 items-center justify-center rounded-lg lg:hidden",
-            scrolled
-              ? "text-navy hover:bg-navy/5"
-              : "text-white hover:bg-white/10"
-          )}
+          className="flex h-10 w-10 items-center justify-center rounded-lg text-navy hover:bg-navy/5 lg:hidden"
           aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={isOpen}
         >
@@ -125,7 +107,7 @@ export default function Navbar() {
       {/* Mobile Drawer */}
       {isOpen && (
         <div
-          className="fixed inset-0 top-16 z-40 bg-navy/95 backdrop-blur-md lg:hidden"
+          className="fixed inset-0 top-16 z-40 bg-white border-t border-gray-100 lg:hidden"
           role="dialog"
           aria-modal="true"
           aria-label="Menú de navegación"
@@ -138,10 +120,10 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "rounded-lg px-4 py-3 text-lg font-medium transition-colors",
+                    "rounded-xl px-4 py-3 text-lg font-medium transition-colors",
                     isActive
-                      ? "bg-white/20 text-white"
-                      : "text-white/70 hover:bg-white/10 hover:text-white"
+                      ? "bg-navy/10 text-navy"
+                      : "text-navy/70 hover:bg-navy/5 hover:text-navy"
                   )}
                   aria-current={isActive ? "page" : undefined}
                 >

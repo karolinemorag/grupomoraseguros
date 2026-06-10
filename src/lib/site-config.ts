@@ -27,6 +27,7 @@ export const siteConfig = {
   nav: [
     { label: "Inicio", href: "/" },
     { label: "Seguros", href: "/seguros" },
+    { label: "Estudiantes", href: "/estudiantes-internacionales" },
     { label: "Asistencia 24/7", href: "/asistencia-24h" },
     { label: "Asesor interactivo", href: "/asesor-interactivo" },
     { label: "Blog", href: "/blog" },

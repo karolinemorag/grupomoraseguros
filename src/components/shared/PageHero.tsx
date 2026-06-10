@@ -12,12 +12,12 @@ export default function PageHero({ title, subtitle, className }: PageHeroProps) 
   return (
     <section
       className={cn(
-        "relative overflow-hidden bg-gradient-to-br from-navy to-navy-light px-4 py-20 text-white sm:py-28",
+        "relative overflow-hidden bg-gradient-to-br from-navy to-navy-light px-4 pt-28 pb-16 text-white sm:pt-36 sm:pb-20",
         className
       )}
       aria-label="Encabezado de página"
     >
-      <div className="container-section relative z-10 text-center">
+      <div className="mx-auto max-w-6xl px-6 relative z-10 text-center">
         <h1 className="font-heading text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">
           {title}
         </h1>

@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, MessageCircle, Mail, MapPin } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 
 const mainLinks = [
   { label: "Inicio", href: "/" },
   { label: "Seguros", href: "/seguros" },
+  { label: "Estudiantes internacionales", href: "/estudiantes-internacionales" },
   { label: "Asistencia 24/7", href: "/asistencia-24h" },
   { label: "Asesor interactivo", href: "/asesor-interactivo" },
   { label: "Blog", href: "/blog" },
@@ -23,17 +25,18 @@ const legalLinks = [
 export default function Footer() {
   return (
     <footer className="bg-navy text-white" role="contentinfo">
-      <div className="container-section py-16">
+      <div className="mx-auto max-w-6xl px-6 py-16">
         <div className="grid gap-12 md:grid-cols-4">
           {/* Logo & Description */}
           <div className="md:col-span-1">
-            <Link href="/" className="inline-flex flex-col leading-tight">
-              <span className="font-heading text-2xl font-bold text-white">
-                Grupo Mora
-              </span>
-              <span className="text-sm text-white/60">
-                Agencia exclusiva de seguros · Madrid
-              </span>
+            <Link href="/" className="inline-flex">
+              <Image
+                src="/logo-grupo-mora.jpg"
+                alt="Grupo Mora - Agencia exclusiva de seguros"
+                width={220}
+                height={56}
+                className="h-[56px] w-auto object-contain drop-shadow-md"
+              />
             </Link>
           </div>
 
@@ -122,7 +125,7 @@ export default function Footer() {
         </div>
 
         {/* Disclaimer */}
-        <div className="mt-12 rounded-lg bg-white/5 p-6 text-center">
+        <div className="mt-12 rounded-2xl bg-white/5 p-6 text-center">
           <p className="text-sm text-white/60">
             La información publicada en esta web tiene carácter orientativo.
             Cada caso debe ser analizado de forma personalizada por un

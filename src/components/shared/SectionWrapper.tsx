@@ -19,13 +19,13 @@ export default function SectionWrapper({
     <section
       id={id}
       className={cn(
-        "py-16 sm:py-20",
+        "py-12 sm:py-20",
         background === "light" && "bg-gray-light",
         background === "navy" && "bg-navy text-white",
         className
       )}
     >
-      <div className="container-section">{children}</div>
+      <div className="mx-auto max-w-6xl px-6">{children}</div>
     </section>
   );
 }

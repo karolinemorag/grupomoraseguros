@@ -12,7 +12,7 @@ const config: Config = {
         navy: {
           DEFAULT: "#1B2D4F",
           light: "#2A3F6F",
-          dark: "#0F1E35",
+          dark: "#0F1F3D",
         },
         gold: {
           DEFAULT: "#C9A84C",
@@ -20,19 +20,22 @@ const config: Config = {
           dark: "#A8863A",
         },
         trust: {
-          DEFAULT: "#2E7D57",
+          DEFAULT: "#25D366",
           light: "#3D9E6E",
           dark: "#1F5C3F",
         },
         gray: {
-          light: "#F4F5F7",
+          light: "#F8F9FA",
           mid: "#9CA3AF",
           dark: "#374151",
         },
       },
       fontFamily: {
-        heading: ["var(--font-playfair)", "serif"],
-        body: ["var(--font-inter)", "sans-serif"],
+        playfair: ["var(--font-playfair)", "serif"],
+        inter: ["var(--font-inter)", "sans-serif"],
+      },
+      maxWidth: {
+        "6xl": "72rem",
       },
     },
   },

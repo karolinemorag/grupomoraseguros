@@ -13,41 +13,41 @@
   }
 
   body {
-    @apply font-body text-gray-dark antialiased;
+    @apply font-inter text-gray-dark antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading text-navy;
+    @apply font-playfair text-navy;
   }
 }
 
 @layer components {
-  .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 text-sm font-medium shadow-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2;
   }
 
   .btn-navy {
-    @apply btn-primary bg-navy text-white hover:bg-navy-light focus:ring-navy;
+    @apply btn bg-navy text-white hover:bg-navy-light hover:shadow-lg focus:ring-navy;
   }
 
   .btn-gold {
-    @apply btn-primary bg-gold text-white hover:bg-gold-dark focus:ring-gold;
+    @apply btn bg-[#C9A84C] text-white hover:bg-gold-dark hover:shadow-lg focus:ring-gold;
   }
 
   .btn-trust {
-    @apply btn-primary bg-trust text-white hover:bg-trust-dark focus:ring-trust;
+    @apply btn bg-[#25D366] text-white hover:bg-[#1DA851] hover:shadow-lg focus:ring-[#25D366];
   }
 
   .btn-outline-navy {
-    @apply btn-primary border-2 border-navy text-navy hover:bg-navy hover:text-white focus:ring-navy;
+    @apply btn border-2 border-navy text-navy hover:bg-navy hover:text-white hover:shadow-lg focus:ring-navy;
   }
 
   .btn-outline-white {
-    @apply btn-primary border-2 border-white text-white hover:bg-white hover:text-navy focus:ring-white;
+    @apply btn border-2 border-white text-white hover:bg-white hover:text-navy hover:shadow-lg focus:ring-white;
   }
 
   .container-section {
-    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+    @apply mx-auto max-w-6xl px-6;
   }
 }
 
@@ -57,9 +57,31 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-light;
+  @apply bg-gray-100;
 }
 
 ::-webkit-scrollbar-thumb {
   @apply rounded-full bg-navy/30 hover:bg-navy/50;
 }
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Delay utils */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }

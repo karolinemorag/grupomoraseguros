@@ -1,9 +1,4 @@
 name = "grupomoraseguros"
+pages_build_output_dir = ".vercel/output/static"
 compatibility_date = "2026-06-10"
-compatibility_flags = ["nodejs_compat"]
-
-[env.production]
-compatibility_flags = ["nodejs_compat"]
-
-[env.preview]
 compatibility_flags = ["nodejs_compat"]

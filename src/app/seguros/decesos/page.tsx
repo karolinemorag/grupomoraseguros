@@ -1,12 +1,13 @@
 import PageHero from "@/components/shared/PageHero";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import ContactForm from "@/components/shared/ContactForm";
+import { siteConfig } from "@/lib/site-config";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Seguro de decesos",
   description:
-    "Protege a tu familia con un seguro de decesos en Madrid. Cubrimos gastos funerarios, trámites y asistencia. Asesoramiento personalizado en Grupo Mora.",
+    "Información sobre el seguro de decesos. Conoce sus coberturas y resuelve tus dudas con Karoline Mora.",
 };
 
 export default function DecesosPage() {
@@ -14,7 +15,7 @@ export default function DecesosPage() {
     <>
       <PageHero
         title="Seguro de decesos"
-        subtitle="Protege a tu familia de las cargas económicas y burocráticas en los momentos más difíciles."
+        subtitle="Conoce qué cubre y para quién puede ser adecuado."
       />
 
       <SectionWrapper background="white">
@@ -23,26 +24,26 @@ export default function DecesosPage() {
             ¿Qué es un seguro de decesos?
           </h2>
           <p className="mt-4 text-lg text-gray-dark/80">
-            Un seguro de decesos cubre los gastos y trámites asociados al
-            fallecimiento de una persona asegurada. Su objetivo es liberar a la
-            familia de la carga económica y burocrática en un momento de duelo,
-            permitiendo que puedan centrarse en lo realmente importante.
+            Un seguro de decesos puede incluir la organización y prestación del
+            servicio funerario dentro de los límites y condiciones contratados.
+            Su objetivo es liberar a la familia de la carga económica y
+            burocrática en un momento de duelo.
           </p>
 
           <h3 className="mt-10 font-heading text-xl font-bold text-navy">
-            ¿Para quién está recomendado?
+            ¿Para quién puede ser adecuado?
           </h3>
           <ul className="mt-4 space-y-3">
             <li className="flex items-start gap-3">
               <span className="mt-1.5 flex h-2 w-2 flex-shrink-0 rounded-full bg-gold" />
               <span className="text-gray-dark/80">
-                Personas mayores que quieren aliviar a sus hijos de cualquier carga.
+                Personas que quieren dejar organizados los gastos y trámites funerarios.
               </span>
             </li>
             <li className="flex items-start gap-3">
               <span className="mt-1.5 flex h-2 w-2 flex-shrink-0 rounded-full bg-gold" />
               <span className="text-gray-dark/80">
-                Familias con recursos limitados que no podrían afrontar un gasto imprevisto.
+                Familias que desean evitar que sus allegados asuman cargas imprevistas.
               </span>
             </li>
             <li className="flex items-start gap-3">
@@ -54,16 +55,15 @@ export default function DecesosPage() {
           </ul>
 
           <h3 className="mt-10 font-heading text-xl font-bold text-navy">
-            ¿Qué cubre?
+            Aspectos que suelen revisarse
           </h3>
           <ul className="mt-4 space-y-3">
             {[
-              "Gastos de tanatorio y servicios funerarios básicos",
-              "Traslado del fallecido (nacional e internacional)",
+              "Capital asegurado o servicios contratados",
+              "Cobertura de traslados nacionales e internacionales",
               "Gestión de documentación y trámites legales",
-              "Gastos de cementerio o crematorio",
-              "Servicio funerario completo",
-              "Asistencia psicológica para la familia",
+              "Servicios funerarios incluidos",
+              "Asistencia adicional disponible",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-1.5 flex h-2 w-2 flex-shrink-0 rounded-full bg-gold" />
@@ -71,11 +71,19 @@ export default function DecesosPage() {
               </li>
             ))}
           </ul>
+
+          {/* Aviso contractual */}
+          <div className="mt-10 rounded-lg bg-gray-light p-4 text-sm text-gray-dark/60">
+            La información de esta página es orientativa y no sustituye las
+            condiciones generales, particulares y especiales de la póliza. La
+            disponibilidad, precio, coberturas y contratación están sujetos a
+            las condiciones y criterios de aceptación de la entidad aseguradora.
+          </div>
         </div>
       </SectionWrapper>
 
       <SectionWrapper background="light">
-        <ContactForm defaultInterest="decesos" title="¿Quieres saber más sobre el seguro de decesos?" subtitle="Te explicamos todos los detalles sin compromiso." />
+        <ContactForm defaultInterest="decesos" title="¿Quieres saber más sobre el seguro de decesos?" subtitle="Te explicamos los detalles sin compromiso." />
       </SectionWrapper>
     </>
   );

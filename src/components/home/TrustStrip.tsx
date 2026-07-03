@@ -1,26 +1,29 @@
 "use client";
 
 const items = [
-  "Atención directa",
-  "Inscripción verificable",
-  "Explicaciones claras",
-  "Acompañamiento durante el proceso",
+  { number: "01", text: "Atención directa" },
+  { number: "02", text: "Inscripción verificable" },
+  { number: "03", text: "Explicaciones claras" },
+  { number: "04", text: "Acompañamiento durante el proceso" },
 ];
 
 export default function TrustStrip() {
   return (
-    <section className="border-b border-border-soft bg-surface-soft">
+    <section className="border-y border-border-soft bg-surface-soft" role="list" aria-label="Señales de confianza">
       <div className="container-section">
-        <div className="flex flex-col py-5 md:flex-row">
-          {items.map((text, i) => (
+        <div className="grid grid-cols-2 divide-x divide-border-soft md:grid-cols-4">
+          {items.map((item) => (
             <div
-              key={text}
-              className="flex items-center gap-3 border-b border-border-soft/50 py-3 last:border-b-0 md:border-b-0 md:border-r md:border-border-soft/50 md:px-6 md:py-0 md:first:pl-0 md:last:border-r-0 md:last:pr-0"
+              key={item.number}
+              className="flex flex-col items-center justify-center gap-1.5 px-4 py-7 text-center md:py-8"
+              role="listitem"
             >
-              <span className="text-xs font-semibold tracking-widest text-asisa-blue">
-                {String(i + 1).padStart(2, "0")}
+              <span className="text-sm font-semibold tracking-wider text-asisa-blue">
+                {item.number}
               </span>
-              <span className="text-sm font-medium text-text-primary">{text}</span>
+              <span className="text-[15px] font-semibold text-text-primary leading-tight">
+                {item.text}
+              </span>
             </div>
           ))}
         </div>

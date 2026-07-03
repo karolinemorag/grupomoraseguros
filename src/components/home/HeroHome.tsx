@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { siteConfig } from "@/lib/site-config";
 import { ArrowRight, MessageCircle } from "lucide-react";
 
@@ -8,21 +9,21 @@ export default function HeroHome() {
   const whatsappUrl = `https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, "")}`;
 
   return (
-    <section className="relative overflow-hidden bg-white" aria-label="Hero principal">
+    <section className="relative overflow-hidden bg-white pt-8 md:pt-10" aria-label="Hero principal">
       <div className="container-section">
-        <div className="flex min-h-[620px] flex-col items-center gap-12 py-20 md:flex-row md:py-0">
+        <div className="flex flex-col items-center gap-10 md:flex-row md:gap-12">
           {/* Left column - Text (55%) */}
-          <div className="w-full max-w-xl md:w-[55%] md:py-24">
+          <div className="w-full max-w-xl md:w-[55%]">
             <span className="eyebrow">ASESORAMIENTO PERSONAL EN SEGUROS</span>
-            <h1 className="mt-6 text-display-xl text-text-primary">
+            <h1 className="mt-4 text-display-xl text-text-primary">
               Seguros claros para proteger tus decisiones importantes.
             </h1>
-            <p className="mt-6 text-body-lg text-text-secondary leading-relaxed max-w-lg">
+            <p className="mt-4 text-body-lg text-text-secondary leading-relaxed max-w-lg">
               {siteConfig.ownerName} te ayuda a entender las opciones disponibles,
               revisar las condiciones y encontrar una alternativa adaptada a tu
               situación.
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
                 href={whatsappUrl}
                 target="_blank"
@@ -42,14 +43,14 @@ export default function HeroHome() {
               </Link>
             </div>
             {/* Professional seal */}
-            <div className="mt-10 border-l-2 border-mora-gold pl-4">
-              <p className="text-sm font-medium text-text-primary">
+            <div className="mt-8 border-l-2 border-mora-gold pl-4">
+              <p className="text-sm font-semibold text-text-primary">
                 {siteConfig.ownerName}
               </p>
               <p className="text-xs text-text-secondary">
                 {siteConfig.professionalStatus}
               </p>
-              <p className="text-xs text-text-secondary/70">
+              <p className="text-xs text-text-secondary/60">
                 DGSFP {siteConfig.dgsfpCode}
               </p>
             </div>
@@ -57,14 +58,14 @@ export default function HeroHome() {
 
           {/* Right column - Editorial image (45%) */}
           <div className="relative w-full md:w-[45%] md:self-stretch">
-            <div className="relative h-full min-h-[400px] overflow-hidden rounded-2xl md:rounded-bl-2xl">
-              <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                style={{
-                  backgroundImage:
-                    'url("https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop")',
-                }}
-                aria-hidden="true"
+            <div className="relative h-[420px] overflow-hidden rounded-2xl md:h-[560px]">
+              <Image
+                src="/international-feature.jpg"
+                alt="Arquitectura contemporánea de Madrid"
+                fill
+                sizes="(max-width: 768px) 100vw, 45vw"
+                className="object-cover object-center"
+                priority
               />
             </div>
           </div>

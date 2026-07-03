@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, Calendar } from "lucide-react";
+import { Menu, X, Calendar, Instagram } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
@@ -83,9 +83,19 @@ export default function Navbar() {
               </Link>
             );
           })}
+          <a
+            href="https://www.instagram.com/grupomoraseguros/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-4 flex h-10 items-center gap-1.5 rounded-lg bg-gradient-to-r from-pink-500 via-purple-500 to-orange-400 px-4 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md"
+            aria-label="Instagram @grupomoraseguros"
+          >
+            <Instagram className="h-4 w-4" aria-hidden="true" />
+            @grupomoraseguros
+          </a>
           <Link
             href="/contacto"
-            className="btn-gold ml-4 h-10 px-5 text-sm"
+            className="btn-gold ml-3 h-10 px-5 text-sm"
             aria-label="Pedir cita"
           >
             <Calendar className="h-4 w-4" aria-hidden="true" />
@@ -131,9 +141,19 @@ export default function Navbar() {
                 </Link>
               );
             })}
+            <a
+              href="https://www.instagram.com/grupomoraseguros/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-pink-500 via-purple-500 to-orange-400 text-base font-semibold text-white shadow-sm transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+              aria-label="Instagram @grupomoraseguros"
+            >
+              <Instagram className="h-5 w-5" aria-hidden="true" />
+              @grupomoraseguros
+            </a>
             <Link
               href="/contacto"
-              className="btn-gold mt-4 h-12 w-full text-base"
+              className="btn-gold mt-3 h-12 w-full text-base"
               aria-label="Pedir cita"
             >
               <Calendar className="h-5 w-5" aria-hidden="true" />

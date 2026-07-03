@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, MessageCircle, Mail, MapPin } from "lucide-react";
+import { Phone, MessageCircle, MapPin, Instagram } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 
 const mainLinks = [
@@ -70,12 +70,14 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href={`mailto:${siteConfig.email}`}
+                  href="https://www.instagram.com/grupomoraseguros/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-gold"
-                  aria-label={`Email: ${siteConfig.email}`}
+                  aria-label="Instagram @grupomoraseguros"
                 >
-                  <Mail className="h-4 w-4 flex-shrink-0 text-gold" aria-hidden="true" />
-                  {siteConfig.email}
+                  <Instagram className="h-4 w-4 flex-shrink-0 text-gold" aria-hidden="true" />
+                  @grupomoraseguros
                 </a>
               </li>
               <li className="flex items-start gap-2 text-sm text-white/70">

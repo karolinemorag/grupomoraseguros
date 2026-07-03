@@ -4,7 +4,6 @@ export const siteConfig = {
   location: "Madrid",
   telefono: "+34 655 172 622",
   whatsapp: "+34655172622",
-  email: "kmoragarcia@tuasesorasisa.es",
   direccion: "Avenida Miguel Delibes 15, Madrid, 28052",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://grupomora.es",
   seo: {

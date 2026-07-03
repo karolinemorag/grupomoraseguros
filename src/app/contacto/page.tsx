@@ -1,7 +1,7 @@
 import PageHero from "@/components/shared/PageHero";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import ContactForm from "@/components/shared/ContactForm";
-import { Phone, MessageCircle, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, MessageCircle, MapPin, Clock, Instagram } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import type { Metadata } from "next";
 
@@ -27,11 +27,11 @@ const contactMethods = [
     label: "Escribir por WhatsApp",
   },
   {
-    icon: <Mail className="h-6 w-6" />,
-    title: "Email",
-    value: siteConfig.email,
-    href: `mailto:${siteConfig.email}`,
-    label: "Enviar email",
+    icon: <Instagram className="h-6 w-6" />,
+    title: "Instagram",
+    value: "@grupomoraseguros",
+    href: "https://www.instagram.com/grupomoraseguros/",
+    label: "Seguir en Instagram",
   },
   {
     icon: <MapPin className="h-6 w-6" />,

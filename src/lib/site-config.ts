@@ -14,26 +14,44 @@ export const siteConfig = {
   whatsapp: "+34655172622",
   location: "Madrid",
   horario: "Lunes a viernes: 9:00 - 19:00",
+  // Email pendiente de confirmación
+  contactEmail: "",
+  privacyEmail: "",
   social: {
     instagram: "https://www.instagram.com/grupomoraseguros/",
+  },
+  cookieConfig: {
+    consentRequired: false,
+    categories: {
+      necessary: true,
+      analytics: false,
+      marketing: false,
+      preferences: false,
+    },
   },
   whatsappMessages: {
     default:
       "Hola, Karoline. He visitado la web de Grupo Mora Seguros y quisiera recibir información.",
+    homepage:
+      "Hola, Karoline. Me gustaría recibir orientación sobre seguros.",
+    salud:
+      "Hola, Karoline. Quiero información sobre seguros de salud.",
     decesos:
-      "Hola, Karoline. He visitado la página de seguro de decesos de Grupo Mora Seguros y quisiera recibir información.",
+      "Hola, Karoline. He visitado la página de seguro de decesos y quisiera recibir información.",
     vida:
       "Hola, Karoline. Quisiera revisar opciones de seguro de vida.",
     mascotas:
       "Hola, Karoline. Quiero información sobre el seguro para mascotas.",
+    accidentes:
+      "Hola, Karoline. Quiero información sobre seguro de accidentes.",
     internacional:
-      "Hola, Karoline. Necesito orientación sobre un seguro médico para estudiar o residir en España.",
-    revision:
-      "Hola, Karoline. Me gustaría solicitar una revisión personalizada de mis seguros.",
+      "Hola, Karoline. Necesito orientación sobre un seguro médico para estudiar o residir en España. Mi tipo de trámite es: [completar].",
+    asistencia_poliza:
+      "Hola, Karoline. Necesito ayuda con una póliza.",
   },
   seo: {
     defaultTitle:
-      "Grupo Mora Seguros | Asesoramiento personal en seguros en Madrid",
+      "Grupo Mora Seguros | Asesoramiento personal con Karoline Mora",
     defaultDescription:
       "Karoline Mora, agente de seguros exclusivo de ASISA, te ofrece asesoramiento cercano y profesional para encontrar la protección adecuada para ti, tu familia o tu estancia en España.",
     keywords: [
@@ -52,10 +70,9 @@ export const siteConfig = {
   nav: [
     { label: "Inicio", href: "/" },
     { label: "Seguros", href: "/seguros" },
-    { label: "Soluciones internacionales", href: "/estudiantes-internacionales" },
-    { label: "Asistencia", href: "/asistencia-24h" },
+    { label: "Internacional", href: "/estudiantes-internacionales" },
     { label: "Sobre Karoline", href: "/quienes-somos" },
-    { label: "Recursos", href: "/blog" },
+    { label: "Guías", href: "/blog" },
     { label: "Contacto", href: "/contacto" },
   ],
 };

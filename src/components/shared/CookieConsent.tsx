@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { X } from "lucide-react";
+import { siteConfig } from "@/lib/site-config";
 
 interface CookiePreferences {
   necessary: boolean;
@@ -35,6 +36,8 @@ export default function CookieConsent() {
   const [analytics, setAnalytics] = useState(false);
 
   useEffect(() => {
+    // Only show banner if consent is required (analytics/marketing enabled)
+    if (!siteConfig.cookieConfig.consentRequired) return;
     const stored = getStoredPreferences();
     if (!stored) {
       setShowBanner(true);
@@ -64,6 +67,8 @@ export default function CookieConsent() {
     setShowConfig(true);
   }, []);
 
+  // No consent required — don't show banner
+  if (!siteConfig.cookieConfig.consentRequired) return null;
   if (!showBanner && !showConfig) return null;
 
   if (showConfig) {

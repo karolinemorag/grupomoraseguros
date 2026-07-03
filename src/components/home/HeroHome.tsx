@@ -1,7 +1,9 @@
 "use client";
 
-import { CTAWhatsApp, CTAAppointment } from "@/components/shared/CTAButtons";
+import { CTAWhatsApp } from "@/components/shared/CTAButtons";
+import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
+import { ArrowRight } from "lucide-react";
 
 export default function HeroHome() {
   return (
@@ -34,13 +36,19 @@ export default function HeroHome() {
             proteger tus decisiones importantes
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80 sm:text-xl">
-            {siteConfig.ownerName} te orienta para encontrar una opción adaptada
-            a tu situación, comprender sus coberturas y tomar una decisión
-            informada.
+            {siteConfig.ownerName} te ofrece atención directa para entender tus
+            opciones, revisar las condiciones y encontrar una alternativa
+            adaptada a tu situación.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <CTAWhatsApp size="lg" />
-            <CTAAppointment size="lg" />
+            <Link
+              href="/seguros"
+              className="btn-outline-white h-12 px-8 text-sm"
+            >
+              Explorar seguros
+              <ArrowRight className="h-5 w-5" aria-hidden="true" />
+            </Link>
           </div>
           <p className="mt-6 text-sm text-white/50">
             {siteConfig.professionalStatus} &middot; DGSFP {siteConfig.dgsfpCode}

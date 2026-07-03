@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, Calendar, Instagram } from "lucide-react";
+import { Menu, X, Phone, Instagram } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
@@ -55,7 +55,7 @@ export default function Navbar() {
         >
           <Image
             src="/logo-grupo-mora.jpg"
-            alt="Grupo Mora - Agencia exclusiva de seguros"
+            alt="Grupo Mora Seguros - Karoline Mora"
             width={160}
             height={48}
             className="h-[38px] w-auto object-contain md:h-[48px]"
@@ -83,23 +83,24 @@ export default function Navbar() {
               </Link>
             );
           })}
+          {/* Instagram icon subtle */}
           <a
             href="https://www.instagram.com/grupomoraseguros/"
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-4 flex h-10 items-center gap-1.5 rounded-lg bg-gradient-to-r from-pink-500 via-purple-500 to-orange-400 px-4 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md"
+            className="ml-2 flex h-9 w-9 items-center justify-center rounded-lg text-navy/50 transition-colors hover:bg-pink-50 hover:text-pink-600"
             aria-label="Instagram @grupomoraseguros"
           >
             <Instagram className="h-4 w-4" aria-hidden="true" />
-            @grupomoraseguros
           </a>
+          {/* CTA principal */}
           <Link
             href="/contacto"
-            className="btn-gold ml-3 h-10 px-5 text-sm"
-            aria-label="Pedir cita"
+            className="btn-navy ml-2 h-10 px-5 text-sm"
+            aria-label="Solicitar una llamada"
           >
-            <Calendar className="h-4 w-4" aria-hidden="true" />
-            Pedir cita
+            <Phone className="h-4 w-4" aria-hidden="true" />
+            Hablar con Karoline
           </Link>
         </div>
 
@@ -141,11 +142,12 @@ export default function Navbar() {
                 </Link>
               );
             })}
+            {/* Instagram in mobile menu */}
             <a
               href="https://www.instagram.com/grupomoraseguros/"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-pink-500 via-purple-500 to-orange-400 text-base font-semibold text-white shadow-sm transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+              className="flex items-center gap-3 rounded-xl px-4 py-3 text-lg font-medium text-navy/70 transition-colors hover:bg-pink-50 hover:text-pink-600"
               aria-label="Instagram @grupomoraseguros"
             >
               <Instagram className="h-5 w-5" aria-hidden="true" />
@@ -153,11 +155,11 @@ export default function Navbar() {
             </a>
             <Link
               href="/contacto"
-              className="btn-gold mt-3 h-12 w-full text-base"
-              aria-label="Pedir cita"
+              className="btn-navy mt-3 h-12 w-full text-base"
+              aria-label="Solicitar una llamada"
             >
-              <Calendar className="h-5 w-5" aria-hidden="true" />
-              Pedir cita
+              <Phone className="h-5 w-5" aria-hidden="true" />
+              Hablar con Karoline
             </Link>
           </div>
         </div>

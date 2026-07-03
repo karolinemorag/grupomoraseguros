@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site-config";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { healthNeeds, comparisonItems, faqItems, buildContactUrl } from "@/components/insurance/health/health-content";
 import SectionBand from "@/components/layout/SectionBand";
+import { siteImages } from "@/lib/image-library";
 
 export const metadata: Metadata = {
   title: "Seguro de salud: qué conviene comparar",
@@ -113,32 +115,46 @@ export default function SaludPage() {
       {/* Copago y carencia — navy */}
       <HealthConcepts />
 
-      {/* Cuadro médico — blue-soft con borde lateral asisa-blue */}
+      {/* Cuadro médico — blue-soft con imagen y borde lateral asisa-blue */}
       <section className="bg-[#EFF6FC] py-20 sm:py-28">
         <div className="container-section">
-          <div className="mx-auto max-w-4xl">
-            <div className="relative border-l-4 border-asisa-blue pl-6">
-              <h2 className="font-playfair text-3xl font-bold text-text-primary sm:text-4xl">Comprueba médicos y centros antes de contratar.</h2>
-              <p className="mt-4 text-text-secondary leading-relaxed max-w-2xl">
-                El cuadro médico puede variar según la provincia y la modalidad. Consulta siempre el buscador oficial y actualizado de ASISA para revisar profesionales, clínicas y hospitales.
-              </p>
-              <div className="mt-6 flex flex-wrap items-center gap-4">
-                <a
-                  href="https://www.asisa.es/cuadro-medico"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary h-11 px-6 text-sm"
-                >
-                  Consultar cuadro médico oficial
-                  <ExternalLink className="h-4 w-4" aria-hidden="true" />
-                </a>
-                <a href={`${whatsappUrl}?text=${whatsappMsg}`} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-text-secondary transition-colors hover:text-asisa-blue">
-                  Preguntar a Karoline &rarr;
-                </a>
+          <div className="flex flex-col items-center gap-10 md:flex-row">
+            <div className="w-full md:w-[55%]">
+              <div className="relative border-l-4 border-asisa-blue pl-6">
+                <h2 className="font-playfair text-3xl font-bold text-text-primary sm:text-4xl">Comprueba médicos y centros antes de contratar.</h2>
+                <p className="mt-4 text-text-secondary leading-relaxed max-w-2xl">
+                  El cuadro médico puede variar según la provincia y la modalidad. Consulta siempre el buscador oficial y actualizado de ASISA para revisar profesionales, clínicas y hospitales.
+                </p>
+                <div className="mt-6 flex flex-wrap items-center gap-4">
+                  <a
+                    href="https://www.asisa.es/cuadro-medico"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary h-11 px-6 text-sm"
+                  >
+                    Consultar cuadro médico oficial
+                    <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                  </a>
+                  <a href={`${whatsappUrl}?text=${whatsappMsg}`} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-text-secondary transition-colors hover:text-asisa-blue">
+                    Preguntar a Karoline &rarr;
+                  </a>
+                </div>
+                <p className="mt-4 text-xs text-text-secondary/50">
+                  La disponibilidad de un profesional o centro debe comprobarse para la modalidad y fecha concretas.
+                </p>
               </div>
-              <p className="mt-4 text-xs text-text-secondary/50">
-                La disponibilidad de un profesional o centro debe comprobarse para la modalidad y fecha concretas.
-              </p>
+            </div>
+            <div className="w-full md:w-[45%]">
+              <div className="relative h-64 overflow-hidden rounded-xl md:h-72">
+                <Image
+                  src={siteImages.healthCorridor.src}
+                  alt={siteImages.healthCorridor.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 45vw"
+                  className="object-cover"
+                  style={{ objectPosition: siteImages.healthCorridor.objectPosition }}
+                />
+              </div>
             </div>
           </div>
         </div>

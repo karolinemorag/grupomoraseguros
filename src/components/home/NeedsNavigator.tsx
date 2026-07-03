@@ -16,7 +16,7 @@ const needs: NeedItem[] = [
     title: "Quiero revisar un seguro de salud.",
     description:
       "Comprende las modalidades disponibles, sus posibles copagos, carencias, servicios y condiciones de contratación.",
-    href: "/contacto",
+    href: "/seguros/salud",
   },
   {
     number: "02",

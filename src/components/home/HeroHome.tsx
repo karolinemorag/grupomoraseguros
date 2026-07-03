@@ -60,11 +60,11 @@ export default function HeroHome() {
           <div className="relative w-full md:w-[45%] md:self-stretch">
             <div className="relative h-[420px] overflow-hidden rounded-2xl md:h-[560px]">
               <Image
-                src="/international-feature.jpg"
+                src="/images/hero-madrid-architecture.webp"
                 alt="Arquitectura contemporánea de Madrid"
                 fill
                 sizes="(max-width: 768px) 100vw, 45vw"
-                className="object-cover object-center"
+                className="object-cover object-[center_30%]"
                 priority
               />
             </div>

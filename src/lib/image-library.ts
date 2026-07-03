@@ -5,10 +5,10 @@
 
 export const siteImages = {
   homeMadrid: {
-    src: "/images/home/hero-madrid-cuatro-torres.webp",
-    alt: "Arquitectura contemporánea del skyline de Madrid",
-    pexelsId: "35729663",
-    objectPosition: "center 30%",
+    src: "/images/home/hero-madrid-clean-skyline.webp",
+    alt: "Skyline de Madrid con arquitectura contemporánea",
+    pexelsId: "35388176",
+    objectPosition: "center center",
   },
 
   insuranceHub: {

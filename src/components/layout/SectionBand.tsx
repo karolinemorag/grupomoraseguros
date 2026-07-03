@@ -10,9 +10,14 @@ export type SectionTone =
   | "navy"
   | "warm";
 
-interface SectionBandProps {
+export type SectionSize = "compact" | "default" | "spacious";
+
+export interface SectionBandProps {
   tone?: SectionTone;
-  size?: "compact" | "default" | "spacious";
+  size?: SectionSize;
+  contained?: boolean;
+  topBorder?: boolean;
+  bottomBorder?: boolean;
   id?: string;
   className?: string;
   children: React.ReactNode;
@@ -27,7 +32,7 @@ const toneStyles: Record<SectionTone, string> = {
   warm: "bg-surface-warm text-text-primary",
 };
 
-const sizeStyles = {
+const sizeStyles: Record<SectionSize, string> = {
   compact: "py-14 sm:py-16",
   default: "py-20 sm:py-24",
   spacious: "py-28 sm:py-32",
@@ -36,6 +41,9 @@ const sizeStyles = {
 export default function SectionBand({
   tone = "white",
   size = "default",
+  contained = true,
+  topBorder = false,
+  bottomBorder = false,
   id,
   className,
   children,
@@ -43,9 +51,19 @@ export default function SectionBand({
   return (
     <section
       id={id}
-      className={cn(toneStyles[tone], sizeStyles[size], className)}
+      className={cn(
+        toneStyles[tone],
+        sizeStyles[size],
+        topBorder && "border-t border-black/5",
+        bottomBorder && "border-b border-black/5",
+        className
+      )}
     >
-      <div className="container-section">{children}</div>
+      {contained ? (
+        <div className="container-section">{children}</div>
+      ) : (
+        children
+      )}
     </section>
   );
 }

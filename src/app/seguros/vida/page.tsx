@@ -3,6 +3,7 @@ import { siteConfig } from "@/lib/site-config";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { lifeNeeds, policyConcepts, faqItems, buildContactUrl } from "@/components/insurance/life/life-content";
+import SectionBand from "@/components/layout/SectionBand";
 
 export const metadata: Metadata = {
   title: "Seguro de vida: capital, beneficiarios y garantías",
@@ -33,7 +34,7 @@ export default function VidaPage() {
         }}
       />
 
-      {/* Hero 56/44 */}
+      {/* Hero 56/44 — white with navy visual */}
       <section className="relative overflow-hidden bg-white">
         <div className="container-section">
           <div className="flex min-h-[520px] flex-col items-center gap-12 py-16 md:flex-row md:py-0">
@@ -80,78 +81,120 @@ export default function VidaPage() {
         </div>
       </section>
 
-      {/* Introducción */}
-      <section className="bg-surface-warm py-16 sm:py-20">
+      {/* Introducción — warm */}
+      <SectionBand tone="warm" size="default">
+        <div className="mx-auto max-w-3xl">
+          <span className="eyebrow">EL PUNTO DE PARTIDA</span>
+          <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">
+            El seguro de vida no empieza por una póliza.
+          </h2>
+          <div className="mt-4 h-px w-12 bg-mora-gold" aria-hidden="true" />
+          <p className="mt-6 text-text-secondary leading-relaxed">
+            Empieza por identificar qué personas, pagos y proyectos dependen de tus ingresos.
+            A partir de ahí pueden revisarse el capital, la duración y las garantías que ofrece
+            cada modalidad.
+          </p>
+          <p className="mt-4 text-sm text-text-secondary/70">
+            La contratación y sus condiciones están sujetas a la valoración de la entidad
+            aseguradora.
+          </p>
+        </div>
+      </SectionBand>
+
+      {/* LifeNeedsNavigator — white */}
+      <LifeNeedsNavigator />
+
+      {/* Dos enfoques — blue-soft band, no cards */}
+      <SectionBand tone="blue-soft" size="default">
+        <LifeProtectionPaths />
+      </SectionBand>
+
+      {/* Conceptos fundamentales — white */}
+      <LifePolicyConcepts />
+
+      {/* Capital Planning Guide — navy o split */}
+      <section className="bg-[#071A2D] py-20 sm:py-28" id="capital">
         <div className="container-section">
           <div className="mx-auto max-w-3xl">
-            <span className="eyebrow">EL PUNTO DE PARTIDA</span>
-            <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">
-              El seguro de vida no empieza por una póliza.
-            </h2>
-            <div className="mt-4 h-px w-12 bg-mora-gold" aria-hidden="true" />
-            <p className="mt-6 text-text-secondary leading-relaxed">
-              Empieza por identificar qué personas, pagos y proyectos dependen de tus ingresos.
-              A partir de ahí pueden revisarse el capital, la duración y las garantías que ofrece
-              cada modalidad.
+            <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-mora-gold">
+              CAPITAL ASEGURADO
+            </span>
+            <h2 className="mt-4 font-playfair text-3xl font-bold text-white sm:text-4xl">Una cifra debe responder a necesidades concretas.</h2>
+            <div className="mt-10 space-y-4">
+              {[
+                { letter: "A", label: "Deudas pendientes", desc: "Hipoteca, préstamos u otras obligaciones que se quieran tener en cuenta." },
+                { letter: "B", label: "Periodo de sustitución de ingresos", desc: "Tiempo durante el que las personas dependientes podrían necesitar apoyo económico." },
+                { letter: "C", label: "Compromisos futuros", desc: "Estudios, cuidados, vivienda u otros gastos previstos." },
+                { letter: "D", label: "Recursos ya disponibles", desc: "Ahorros, patrimonio y otras protecciones existentes que convenga considerar." },
+              ].map((item) => (
+                <div key={item.letter} className="flex items-start gap-4 border border-white/10 rounded-xl bg-white/10 p-5">
+                  <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-asisa-blue text-sm font-bold text-white">{item.letter}</span>
+                  <div>
+                    <span className="text-sm font-semibold text-white">{item.letter}. {item.label}</span>
+                    <p className="mt-0.5 text-xs text-white/60">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-6 flex items-center justify-center gap-3 text-lg font-bold text-white">
+              <span className="text-white">A</span><span className="text-mora-gold">+</span><span className="text-white">B</span><span className="text-mora-gold">+</span><span className="text-white">C</span><span className="text-mora-gold">−</span><span className="text-white">D</span>
+            </div>
+            <p className="mt-4 text-xs text-white/40 text-center">
+              Este esquema es orientativo y no constituye asesoramiento financiero ni determina por sí solo el capital adecuado.
             </p>
-            <p className="mt-4 text-sm text-text-secondary/70">
-              La contratación y sus condiciones están sujetas a la valoración de la entidad
-              aseguradora.
-            </p>
+            <div className="mt-6 text-center">
+              <Link href={buildContactUrl("capital")} className="inline-flex h-11 items-center justify-center rounded-lg bg-white px-6 text-sm font-semibold text-mora-navy transition-colors hover:bg-white/90">
+                Revisar estas cifras con Karoline
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* LifeNeedsNavigator */}
-      <LifeNeedsNavigator />
+      {/* Estructura de protección — blue-strong (respiración tras navy) */}
+      <SectionBand tone="blue-strong" size="default">
+        <LifeCoverageStructure />
+      </SectionBand>
 
-      {/* Dos enfoques */}
-      <LifeProtectionPaths />
+      {/* Beneficiarios — warm */}
+      <SectionBand tone="warm" size="default">
+        <BeneficiarySection />
+      </SectionBand>
 
-      {/* Conceptos fundamentales */}
-      <LifePolicyConcepts />
-
-      {/* Capital Planning Guide */}
-      <CapitalPlanningGuide />
-
-      {/* Garantía principal y opcionales */}
-      <LifeCoverageStructure />
-
-      {/* Beneficiarios */}
-      <BeneficiarySection />
-
-      {/* Valoración */}
+      {/* Valoración — white */}
       <UnderwritingSection />
 
-      {/* Cómo orienta Karoline */}
-      <KarolineLifeGuidance />
+      {/* Cómo orienta Karoline — blue-soft */}
+      <SectionBand tone="blue-soft" size="default">
+        <KarolineLifeGuidance />
+      </SectionBand>
 
-      {/* FAQ */}
+      {/* FAQ — white (after blue-soft) */}
       <LifeFaqSection />
 
-      {/* CTA final */}
-      <section className="bg-surface-soft py-16 sm:py-20">
+      {/* CTA final — asisa-blue */}
+      <section className="bg-asisa-blue py-20 sm:py-28 text-white">
         <div className="container-section">
-          <div className="mx-auto max-w-2xl">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-mora-gold text-center block">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-white/70">
               HABLAR CON KAROLINE
             </span>
-            <h2 className="mt-4 font-playfair text-2xl font-bold text-text-primary sm:text-3xl text-center">
+            <h2 className="mt-4 font-playfair text-3xl font-bold text-white sm:text-4xl">
               Ordenemos primero qué necesitas proteger.
             </h2>
-            <p className="mt-2 text-sm text-text-secondary text-center">
+            <p className="mt-4 text-white/70 leading-relaxed">
               Cuéntale a Karoline qué responsabilidades quieres revisar y podrá ayudarte a
               entender las modalidades disponibles y los siguientes pasos.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link href={contactUrl} className="btn-primary h-12 px-8 text-sm">
+              <Link href={contactUrl} className="bg-white text-asisa-blue hover:bg-white/90 inline-flex h-12 items-center justify-center rounded-lg px-8 text-sm font-semibold transition-colors">
                 Revisar mi situación
               </Link>
               <a
                 href={`${whatsappUrl}?text=${whatsappMsg}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium text-text-secondary transition-colors hover:text-asisa-blue"
+                className="text-sm font-medium text-white/70 transition-colors hover:text-white"
               >
                 Hablar por WhatsApp &rarr;
               </a>
@@ -186,13 +229,13 @@ export default function VidaPage() {
 
 function LifeResponsibilityVisual() {
   return (
-    <div className="relative flex h-full min-h-[300px] items-center justify-center overflow-hidden rounded-2xl bg-surface-warm md:min-h-[400px] border border-border-soft">
+    <div className="relative flex h-full min-h-[300px] items-center justify-center overflow-hidden rounded-2xl bg-mora-navy md:min-h-[400px]">
       <div className="grid grid-cols-2 gap-5 p-8">
         {["CAPITAL", "BENEFICIARIOS", "DURACIÓN", "RESPONSABILIDADES"].map((item, i) => (
           <div key={item} className="flex flex-col items-center gap-2">
-            <span className="text-xs font-light text-text-secondary/40">{String(i + 1).padStart(2, "0")}</span>
-            <span className="text-sm font-semibold text-text-primary text-center">{item}</span>
-            <div className="h-px w-6 bg-mora-gold/50" aria-hidden="true" />
+            <span className="text-xs font-light text-white/30">{String(i + 1).padStart(2, "0")}</span>
+            <span className="text-sm font-semibold text-white text-center">{item}</span>
+            <div className="h-px w-6 bg-mora-gold/60" aria-hidden="true" />
           </div>
         ))}
       </div>
@@ -238,33 +281,41 @@ function LifeNeedsNavigator() {
 
 function LifeProtectionPaths() {
   return (
-    <section className="bg-surface-soft py-20 sm:py-28">
-      <div className="container-section">
-        <div className="mx-auto max-w-4xl">
-          <span className="eyebrow">DOS ENFOQUES</span>
-          <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">Dos puntos de partida diferentes.</h2>
-          <div className="mt-10 grid gap-8 md:grid-cols-2">
-            <div className="border border-border-soft rounded-2xl p-8 bg-white">
-              <h3 className="text-lg font-bold text-text-primary">Protección vinculada a responsabilidades personales</h3>
-              <p className="mt-3 text-sm text-text-secondary leading-relaxed">
-                Permite revisar un capital destinado a las personas beneficiarias y valorar
-                garantías adicionales según la modalidad contratada.
-              </p>
+    <div>
+      <div className="mx-auto max-w-4xl">
+        <span className="eyebrow">DOS ENFOQUES</span>
+        <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">Dos puntos de partida diferentes.</h2>
+        <div className="mt-10 gap-0 md:flex md:divide-x md:divide-border-soft">
+          <div className="flex-1 pb-6 md:pb-0 md:pr-10 border-b md:border-b-0 border-border-soft">
+            <div className="flex items-start gap-4">
+              <span className="flex-shrink-0 text-xs font-semibold text-mora-gold">01</span>
+              <div>
+                <h3 className="text-base font-semibold text-text-primary">Protección vinculada a responsabilidades personales</h3>
+                <p className="mt-2 text-sm text-text-secondary leading-relaxed">
+                  Permite revisar un capital destinado a las personas beneficiarias y valorar
+                  garantías adicionales según la modalidad contratada.
+                </p>
+              </div>
             </div>
-            <div className="border border-border-soft rounded-2xl p-8 bg-white">
-              <h3 className="text-lg font-bold text-text-primary">Protección relacionada con un préstamo hipotecario</h3>
-              <p className="mt-3 text-sm text-text-secondary leading-relaxed">
-                Permite estudiar una modalidad orientada a la deuda hipotecaria, revisando
-                capital, duración, beneficiarios y funcionamiento concreto.
-              </p>
-              <p className="mt-3 text-xs text-text-secondary/60">
-                Las condiciones concretas deben comprobarse en la documentación del producto.
-              </p>
+          </div>
+          <div className="flex-1 pt-6 md:pt-0 md:pl-10">
+            <div className="flex items-start gap-4">
+              <span className="flex-shrink-0 text-xs font-semibold text-mora-gold">02</span>
+              <div>
+                <h3 className="text-base font-semibold text-text-primary">Protección relacionada con un préstamo hipotecario</h3>
+                <p className="mt-2 text-sm text-text-secondary leading-relaxed">
+                  Permite estudiar una modalidad orientada a la deuda hipotecaria, revisando
+                  capital, duración, beneficiarios y funcionamiento concreto.
+                </p>
+                <p className="mt-2 text-xs text-text-secondary/60">
+                  Las condiciones concretas deben comprobarse en la documentación del producto.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -292,111 +343,66 @@ function LifePolicyConcepts() {
   );
 }
 
-function CapitalPlanningGuide() {
-  return (
-    <section className="bg-surface-soft py-20 sm:py-28" id="capital">
-      <div className="container-section">
-        <div className="mx-auto max-w-3xl">
-          <span className="eyebrow">CAPITAL ASEGURADO</span>
-          <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">Una cifra debe responder a necesidades concretas.</h2>
-          <div className="mt-10 space-y-4">
-            {[
-              { letter: "A", label: "Deudas pendientes", desc: "Hipoteca, préstamos u otras obligaciones que se quieran tener en cuenta." },
-              { letter: "B", label: "Periodo de sustitución de ingresos", desc: "Tiempo durante el que las personas dependientes podrían necesitar apoyo económico." },
-              { letter: "C", label: "Compromisos futuros", desc: "Estudios, cuidados, vivienda u otros gastos previstos." },
-              { letter: "D", label: "Recursos ya disponibles", desc: "Ahorros, patrimonio y otras protecciones existentes que convenga considerar." },
-            ].map((item) => (
-              <div key={item.letter} className="flex items-start gap-4 border border-border-soft rounded-xl bg-white p-5">
-                <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-mora-navy text-sm font-bold text-white">{item.letter}</span>
-                <div>
-                  <span className="text-sm font-semibold text-text-primary">{item.letter}. {item.label}</span>
-                  <p className="mt-0.5 text-xs text-text-secondary">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-6 flex items-center justify-center gap-3 text-lg font-bold text-text-primary">
-            <span>A</span><span className="text-mora-gold">+</span><span>B</span><span className="text-mora-gold">+</span><span>C</span><span className="text-mora-gold">−</span><span>D</span>
-          </div>
-          <p className="mt-4 text-xs text-text-secondary/60 text-center">
-            Este esquema es orientativo y no constituye asesoramiento financiero ni determina por sí solo el capital adecuado.
-          </p>
-          <div className="mt-6 text-center">
-            <Link href={buildContactUrl("capital")} className="btn-primary h-11 px-6 text-sm">
-              Revisar estas cifras con Karoline
-            </Link>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function LifeCoverageStructure() {
   return (
-    <section className="bg-mora-navy py-20 sm:py-28">
-      <div className="container-section">
-        <div className="mx-auto max-w-3xl">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-mora-gold">ESTRUCTURA DE LA PROTECCIÓN</span>
-          <h2 className="mt-4 font-playfair text-3xl font-bold text-white sm:text-4xl">No todas las garantías funcionan igual.</h2>
-          <div className="mt-10 space-y-6">
-            <div className="border-b border-white/10 pb-6">
-              <h3 className="text-lg font-semibold text-white">Garantía principal</h3>
-              <p className="mt-2 text-sm text-white/60 leading-relaxed">
-                En determinadas modalidades, la garantía principal contempla el pago del capital
-                asegurado a las personas beneficiarias cuando se produce el fallecimiento del
-                asegurado en las circunstancias previstas en la póliza.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-white">Garantías opcionales</h3>
-              <p className="mt-2 text-sm text-white/60 leading-relaxed">
-                Puede contratarse como garantía opcional, según producto, condiciones y aceptación:
-              </p>
-              <ul className="mt-3 space-y-2">
-                {[
-                  "Incapacidad permanente absoluta por cualquier causa.",
-                  "Fallecimiento por accidente.",
-                  "Garantías relacionadas con accidente de circulación.",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-white/50">
-                    <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-mora-gold/60" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+    <div>
+      <div className="mx-auto max-w-3xl">
+        <h2 className="font-playfair text-3xl font-bold text-text-primary sm:text-4xl">No todas las garantías funcionan igual.</h2>
+        <div className="mt-10 space-y-6">
+          <div className="border-b border-border-soft pb-6">
+            <h3 className="text-lg font-semibold text-text-primary">Garantía principal</h3>
+            <p className="mt-2 text-sm text-text-secondary leading-relaxed">
+              En determinadas modalidades, la garantía principal contempla el pago del capital
+              asegurado a las personas beneficiarias cuando se produce el fallecimiento del
+              asegurado en las circunstancias previstas en la póliza.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold text-text-primary">Garantías opcionales</h3>
+            <p className="mt-2 text-sm text-text-secondary leading-relaxed">
+              Puede contratarse como garantía opcional, según producto, condiciones y aceptación:
+            </p>
+            <ul className="mt-3 space-y-2">
+              {[
+                "Incapacidad permanente absoluta por cualquier causa.",
+                "Fallecimiento por accidente.",
+                "Garantías relacionadas con accidente de circulación.",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-text-secondary">
+                  <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-mora-gold/60" />
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
 function BeneficiarySection() {
   return (
-    <section className="bg-white py-20 sm:py-28">
-      <div className="container-section">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="font-playfair text-3xl font-bold text-text-primary sm:text-4xl">La designación de beneficiarios merece una revisión clara.</h2>
-          <p className="mt-4 text-text-secondary leading-relaxed">
-            Es importante revisar quién figura como beneficiario, si existe uno o varios, el
-            porcentaje o reparto cuando proceda y mantener la designación actualizada según
-            las circunstancias personales.
-          </p>
-          <p className="mt-3 text-sm text-text-secondary/70">
-            Las consecuencias jurídicas y fiscales pueden depender de las circunstancias
-            personales. Cuando sea necesario, conviene consultar a un profesional especializado.
-          </p>
-        </div>
+    <div>
+      <div className="mx-auto max-w-3xl">
+        <h2 className="font-playfair text-3xl font-bold text-text-primary sm:text-4xl">La designación de beneficiarios merece una revisión clara.</h2>
+        <p className="mt-4 text-text-secondary leading-relaxed">
+          Es importante revisar quién figura como beneficiario, si existe uno o varios, el
+          porcentaje o reparto cuando proceda y mantener la designación actualizada según
+          las circunstancias personales.
+        </p>
+        <p className="mt-3 text-sm text-text-secondary/70">
+          Las consecuencias jurídicas y fiscales pueden depender de las circunstancias
+          personales. Cuando sea necesario, conviene consultar a un profesional especializado.
+        </p>
       </div>
-    </section>
+    </div>
   );
 }
 
 function UnderwritingSection() {
   return (
-    <section className="bg-surface-soft py-20 sm:py-28">
+    <section className="bg-white py-20 sm:py-28">
       <div className="container-section">
         <div className="mx-auto max-w-3xl">
           <span className="eyebrow">VALORACIÓN</span>
@@ -431,31 +437,29 @@ function KarolineLifeGuidance() {
     { n: "04", t: "Acompañar el proceso", d: "Facilitar los siguientes pasos y ayudar a localizar la documentación y canales correspondientes." },
   ];
   return (
-    <section className="bg-white py-20 sm:py-28">
-      <div className="container-section">
-        <div className="mx-auto max-w-3xl">
-          <span className="eyebrow">ORIENTACIÓN PERSONAL</span>
-          <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">Qué hace Karoline durante el proceso.</h2>
-          <div className="mt-10 divide-y divide-border-soft">
-            {steps.map((item) => (
-              <div key={item.n} className="flex items-start gap-5 py-5">
-                <span className="flex-shrink-0 text-xs font-semibold text-mora-gold">{item.n}</span>
-                <div>
-                  <h3 className="text-base font-semibold text-text-primary">{item.t}</h3>
-                  <p className="mt-1 text-sm text-text-secondary">{item.d}</p>
-                </div>
+    <div>
+      <div className="mx-auto max-w-3xl">
+        <span className="eyebrow">ORIENTACIÓN PERSONAL</span>
+        <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">Qué hace Karoline durante el proceso.</h2>
+        <div className="mt-10 divide-y divide-border-soft">
+          {steps.map((item) => (
+            <div key={item.n} className="flex items-start gap-5 py-5">
+              <span className="flex-shrink-0 text-xs font-semibold text-mora-gold">{item.n}</span>
+              <div>
+                <h3 className="text-base font-semibold text-text-primary">{item.t}</h3>
+                <p className="mt-1 text-sm text-text-secondary">{item.d}</p>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
 function LifeFaqSection() {
   return (
-    <section className="bg-surface-soft py-20 sm:py-28">
+    <section className="bg-white py-20 sm:py-28">
       <div className="container-section">
         <div className="mx-auto max-w-3xl">
           <span className="eyebrow">PREGUNTAS FRECUENTES</span>

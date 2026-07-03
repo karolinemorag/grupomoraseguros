@@ -11,10 +11,16 @@
     --mora-gold: #B69A5C;
     --mora-gold-soft: #D8C79C;
     --surface-soft: #F5F8FB;
+    --surface-blue: #EFF6FC;
+    --surface-blue-strong: #E1EEF8;
     --surface-warm: #F8F6F1;
+    --surface-white: #FFFFFF;
     --text-primary: #102235;
     --text-secondary: #586878;
     --border-soft: #DCE4EB;
+    --line-blue: #C9DCEC;
+    --line-warm: #DED4C1;
+    --gold-accent: #B69A5C;
   }
 
   html {

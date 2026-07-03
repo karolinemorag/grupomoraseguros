@@ -84,7 +84,7 @@ const reviewAspects = [
 export default function SegurosPage() {
   return (
     <>
-      {/* Hero editorial */}
+      {/* Hero editorial — white + blue-soft visual */}
       <section className="relative overflow-hidden bg-white">
         <div className="container-section">
           <div className="flex min-h-[500px] flex-col items-center gap-12 py-16 md:flex-row md:py-0">
@@ -135,25 +135,23 @@ export default function SegurosPage() {
         </div>
       </section>
 
-      {/* Introducción editorial */}
-      <section className="bg-surface-warm py-16 sm:py-20">
-        <div className="container-section">
-          <div className="mx-auto max-w-3xl">
-            <span className="eyebrow">EL PUNTO DE PARTIDA</span>
-            <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">
-              No empieces por el nombre del seguro.
-            </h2>
-            <div className="mt-4 h-px w-12 bg-mora-gold" aria-hidden="true" />
-            <p className="mt-6 text-text-secondary leading-relaxed">
-              Empieza por aquello que quieres proteger, el riesgo que te preocupa o la
-              situación que necesitas preparar. {siteConfig.ownerName} podrá ayudarte a
-              revisar las modalidades disponibles y sus condiciones.
-            </p>
-          </div>
+      {/* Introducción editorial — warm */}
+      <SectionBand tone="warm" size="default">
+        <div className="mx-auto max-w-3xl">
+          <span className="eyebrow">EL PUNTO DE PARTIDA</span>
+          <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">
+            No empieces por el nombre del seguro.
+          </h2>
+          <div className="mt-4 h-px w-12 bg-mora-gold" aria-hidden="true" />
+          <p className="mt-6 text-text-secondary leading-relaxed">
+            Empieza por aquello que quieres proteger, el riesgo que te preocupa o la
+            situación que necesitas preparar. {siteConfig.ownerName} podrá ayudarte a
+            revisar las modalidades disponibles y sus condiciones.
+          </p>
         </div>
-      </section>
+      </SectionBand>
 
-      {/* Directorio de soluciones */}
+      {/* Directorio de soluciones — white */}
       <section className="bg-white py-20 sm:py-28" id="directorio">
         <div className="container-section">
           <div className="flex flex-col gap-12 md:flex-row">
@@ -195,7 +193,7 @@ export default function SegurosPage() {
         </div>
       </section>
 
-      {/* Aspectos a revisar */}
+      {/* Aspectos a revisar — navy */}
       <section className="bg-mora-navy py-20 sm:py-28">
         <div className="container-section">
           <div className="mx-auto max-w-3xl">
@@ -226,38 +224,36 @@ export default function SegurosPage() {
         </div>
       </section>
 
-      {/* Papel de Karoline */}
-      <SectionBand tone="blue-soft">
-        <div className="container-section">
-          <div className="mx-auto max-w-3xl">
-            <span className="eyebrow">ORIENTACIÓN PERSONAL</span>
-            <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">
-              Qué hace Karoline durante el proceso.
-            </h2>
-            <p className="mt-4 text-text-secondary leading-relaxed">
-              Su función no es entregarte una lista de productos, sino ayudarte a comprender
-              las alternativas disponibles y los aspectos que conviene revisar.
-            </p>
-            <div className="mt-10 flex flex-col gap-0">
-              {[
-                "Escuchar la situación.",
-                "Identificar las modalidades disponibles.",
-                "Explicar diferencias y condiciones.",
-                "Acompañar la contratación.",
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-4 border-t border-border-soft py-4 last:border-b">
-                  <span className="flex-shrink-0 text-xs font-semibold text-mora-gold">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="text-sm text-text-secondary">{item}</span>
-                </div>
-              ))}
-            </div>
+      {/* Papel de Karoline — blue-soft (orientación) */}
+      <SectionBand tone="blue-soft" size="default">
+        <div className="mx-auto max-w-3xl">
+          <span className="eyebrow">ORIENTACIÓN PERSONAL</span>
+          <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">
+            Qué hace Karoline durante el proceso.
+          </h2>
+          <p className="mt-4 text-text-secondary leading-relaxed">
+            Su función no es entregarte una lista de productos, sino ayudarte a comprender
+            las alternativas disponibles y los aspectos que conviene revisar.
+          </p>
+          <div className="mt-10 flex flex-col gap-0">
+            {[
+              "Escuchar la situación.",
+              "Identificar las modalidades disponibles.",
+              "Explicar diferencias y condiciones.",
+              "Acompañar la contratación.",
+            ].map((item, i) => (
+              <div key={i} className="flex items-start gap-4 border-t border-border-soft py-4 last:border-b">
+                <span className="flex-shrink-0 text-xs font-semibold text-mora-gold">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-sm text-text-secondary">{item}</span>
+              </div>
+            ))}
           </div>
         </div>
       </SectionBand>
 
-      {/* CTA final */}
+      {/* CTA final — asisa-blue band */}
       <section className="bg-asisa-blue py-20 sm:py-28 text-white">
         <div className="container-section">
           <div className="mx-auto max-w-2xl text-center">

@@ -19,12 +19,17 @@ const config: Config = {
         "mora-gold-soft": "#D8C79C",
         surface: {
           white: "#FFFFFF",
+          blue: "#EFF6FC",
+          "blue-strong": "#E1EEF8",
           soft: "#F5F8FB",
           warm: "#F8F6F1",
         },
+        "surface-warm": "#F8F6F1",
         "text-primary": "#102235",
         "text-secondary": "#586878",
         "border-soft": "#DCE4EB",
+        "line-blue": "#C9DCEC",
+        "line-warm": "#DED4C1",
         navy: {
           DEFAULT: "#1B2D4F",
           light: "#2A3F6F",

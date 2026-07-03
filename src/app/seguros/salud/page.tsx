@@ -3,6 +3,7 @@ import { siteConfig } from "@/lib/site-config";
 import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { healthNeeds, comparisonItems, faqItems, buildContactUrl } from "@/components/insurance/health/health-content";
+import SectionBand from "@/components/layout/SectionBand";
 
 export const metadata: Metadata = {
   title: "Seguro de salud: qué conviene comparar",
@@ -33,7 +34,7 @@ export default function SaludPage() {
         }}
       />
 
-      {/* Hero editorial 56/44 */}
+      {/* Hero editorial 56/44 — white */}
       <section className="relative overflow-hidden bg-white">
         <div className="container-section">
           <div className="flex min-h-[520px] flex-col items-center gap-12 py-16 md:flex-row md:py-0">
@@ -81,70 +82,100 @@ export default function SaludPage() {
         </div>
       </section>
 
-      {/* Introducción */}
-      <section className="bg-surface-warm py-16 sm:py-20">
+      {/* Introducción — warm */}
+      <SectionBand tone="warm" size="default">
+        <div className="mx-auto max-w-3xl">
+          <span className="eyebrow">EL PUNTO DE PARTIDA</span>
+          <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">
+            No todos los seguros de salud funcionan igual.
+          </h2>
+          <div className="mt-4 h-px w-12 bg-mora-gold" aria-hidden="true" />
+          <p className="mt-6 text-text-secondary leading-relaxed">
+            Algunas modalidades se centran en la asistencia ambulatoria, otras pueden
+            incorporar hospitalización y determinadas opciones incluyen copagos o sistemas
+            de reembolso. Las condiciones concretas dependen del producto contratado.
+          </p>
+          <p className="mt-4 text-text-secondary leading-relaxed">
+            Antes de comparar precios conviene entender qué uso esperas hacer del seguro
+            y qué servicios quieres revisar.
+          </p>
+        </div>
+      </SectionBand>
+
+      {/* HealthNeedsNavigator — white */}
+      <HealthNeedsNavigator />
+
+      {/* HealthComparisonGuide — blue-soft (herramienta de comparación) */}
+      <SectionBand tone="blue-soft" size="spacious">
+        <HealthComparisonGuide />
+      </SectionBand>
+
+      {/* Copago y carencia — navy */}
+      <HealthConcepts />
+
+      {/* Cuadro médico — blue-soft con borde lateral asisa-blue */}
+      <section className="bg-[#EFF6FC] py-20 sm:py-28">
         <div className="container-section">
-          <div className="mx-auto max-w-3xl">
-            <span className="eyebrow">EL PUNTO DE PARTIDA</span>
-            <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">
-              No todos los seguros de salud funcionan igual.
-            </h2>
-            <div className="mt-4 h-px w-12 bg-mora-gold" aria-hidden="true" />
-            <p className="mt-6 text-text-secondary leading-relaxed">
-              Algunas modalidades se centran en la asistencia ambulatoria, otras pueden
-              incorporar hospitalización y determinadas opciones incluyen copagos o sistemas
-              de reembolso. Las condiciones concretas dependen del producto contratado.
-            </p>
-            <p className="mt-4 text-text-secondary leading-relaxed">
-              Antes de comparar precios conviene entender qué uso esperas hacer del seguro
-              y qué servicios quieres revisar.
-            </p>
+          <div className="mx-auto max-w-4xl">
+            <div className="relative border-l-4 border-asisa-blue pl-6">
+              <h2 className="font-playfair text-3xl font-bold text-text-primary sm:text-4xl">Comprueba médicos y centros antes de contratar.</h2>
+              <p className="mt-4 text-text-secondary leading-relaxed max-w-2xl">
+                El cuadro médico puede variar según la provincia y la modalidad. Consulta siempre el buscador oficial y actualizado de ASISA para revisar profesionales, clínicas y hospitales.
+              </p>
+              <div className="mt-6 flex flex-wrap items-center gap-4">
+                <a
+                  href="https://www.asisa.es/cuadro-medico"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary h-11 px-6 text-sm"
+                >
+                  Consultar cuadro médico oficial
+                  <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                </a>
+                <a href={`${whatsappUrl}?text=${whatsappMsg}`} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-text-secondary transition-colors hover:text-asisa-blue">
+                  Preguntar a Karoline &rarr;
+                </a>
+              </div>
+              <p className="mt-4 text-xs text-text-secondary/50">
+                La disponibilidad de un profesional o centro debe comprobarse para la modalidad y fecha concretas.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* HealthNeedsNavigator */}
-      <HealthNeedsNavigator />
-
-      {/* HealthComparisonGuide */}
-      <HealthComparisonGuide />
-
-      {/* Copago y carencia */}
-      <HealthConcepts />
-
-      {/* Cuadro médico */}
-      <MedicalDirectoryFeature url={whatsappUrl} msg={whatsappMsg} />
-
-      {/* Cómo orienta Karoline */}
+      {/* Cómo orienta Karoline — white */}
       <KarolineGuidance />
 
-      {/* FAQ */}
-      <HealthFaqSection />
+      {/* FAQ — warm (evita terminar con secciones blancas) */}
+      <SectionBand tone="warm" size="default">
+        <HealthFaqSection />
+      </SectionBand>
 
-      {/* CTA final */}
-      <section className="bg-surface-soft py-16 sm:py-20">
+      {/* CTA final — asisa-blue */}
+      <section className="bg-asisa-blue py-20 sm:py-28 text-white">
         <div className="container-section">
-          <div className="mx-auto max-w-2xl">
-            <h2 className="font-playfair text-2xl font-bold text-text-primary sm:text-3xl text-center">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="font-playfair text-3xl font-bold text-white sm:text-4xl">
               Revisa tus opciones de salud con Karoline.
             </h2>
-            <p className="mt-2 text-sm text-text-secondary text-center">
+            <p className="mt-4 text-white/70 leading-relaxed">
               Cuéntale quién necesita cobertura y qué aspectos son importantes para ti.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link href={contactUrl} className="btn-primary h-12 px-8 text-sm">
+              <Link href={contactUrl} className="bg-white text-asisa-blue hover:bg-white/90 inline-flex h-12 items-center justify-center rounded-lg px-8 text-sm font-semibold transition-colors">
                 Consultar mi situación
               </Link>
               <a
                 href={`${whatsappUrl}?text=${whatsappMsg}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium text-text-secondary transition-colors hover:text-asisa-blue"
+                className="text-sm font-medium text-white/70 transition-colors hover:text-white"
               >
                 Hablar por WhatsApp &rarr;
               </a>
             </div>
-            <p className="mt-6 text-xs text-text-secondary/50 text-center">
+            <p className="mt-6 text-xs text-white/50">
               La información médica necesaria para una posible contratación se solicitará,
               cuando proceda, mediante los canales correspondientes de la entidad aseguradora.
             </p>
@@ -230,25 +261,23 @@ function HealthNeedsNavigator() {
 
 function HealthComparisonGuide() {
   return (
-    <section className="bg-surface-soft py-20 sm:py-28" id="que-comparar">
-      <div className="container-section">
-        <div className="mx-auto max-w-4xl">
-          <span className="eyebrow">QUÉ CONVIENE COMPARAR</span>
-          <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">Una póliza es más que una lista de coberturas.</h2>
-          <p className="mt-4 text-text-secondary leading-relaxed max-w-2xl">
-            Revisa estos aspectos antes de decidir. No todos se aplican de la misma manera en todas las modalidades.
-          </p>
-          <div className="mt-10 grid gap-0 divide-y divide-border-soft md:grid-cols-2 md:divide-x md:divide-y-0">
-            {comparisonItems.map((item, i) => (
-              <div key={i} className="py-6 pr-0 md:odd:pr-8 md:even:pl-8">
-                <h3 className="text-sm font-semibold text-text-primary">{item.title}</h3>
-                <p className="mt-1 text-sm text-text-secondary leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
+    <div>
+      <div className="mx-auto max-w-4xl">
+        <span className="eyebrow">QUÉ CONVIENE COMPARAR</span>
+        <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">Una póliza es más que una lista de coberturas.</h2>
+        <p className="mt-4 text-text-secondary leading-relaxed max-w-2xl">
+          Revisa estos aspectos antes de decidir. No todos se aplican de la misma manera en todas las modalidades.
+        </p>
+        <div className="mt-10 grid gap-0 divide-y divide-border-soft md:grid-cols-2 md:divide-x md:divide-y-0">
+          {comparisonItems.map((item, i) => (
+            <div key={i} className="py-6 pr-0 md:odd:pr-8 md:even:pl-8">
+              <h3 className="text-sm font-semibold text-text-primary">{item.title}</h3>
+              <p className="mt-1 text-sm text-text-secondary leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -285,49 +314,6 @@ function HealthConcepts() {
   );
 }
 
-function MedicalDirectoryFeature({ url, msg }: { url: string; msg: string }) {
-  return (
-    <section className="bg-white py-20 sm:py-28">
-      <div className="container-section">
-        <div className="flex flex-col items-center gap-10 md:flex-row">
-          <div className="w-full md:w-[55%]">
-            <h2 className="font-playfair text-3xl font-bold text-text-primary sm:text-4xl">Comprueba médicos y centros antes de contratar.</h2>
-            <p className="mt-4 text-text-secondary leading-relaxed">
-              El cuadro médico puede variar según la provincia y la modalidad. Consulta siempre el buscador oficial y actualizado de ASISA para revisar profesionales, clínicas y hospitales.
-            </p>
-            <div className="mt-6 flex flex-wrap items-center gap-4">
-              <a
-                href="https://www.asisa.es/cuadro-medico"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary h-11 px-6 text-sm"
-              >
-                Consultar cuadro médico oficial
-                <ExternalLink className="h-4 w-4" aria-hidden="true" />
-              </a>
-              <a href={`${url}?text=${msg}`} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-text-secondary transition-colors hover:text-asisa-blue">
-                Preguntar a Karoline &rarr;
-              </a>
-            </div>
-            <p className="mt-4 text-xs text-text-secondary/50">
-              La disponibilidad de un profesional o centro debe comprobarse para la modalidad y fecha concretas.
-            </p>
-          </div>
-          <div className="w-full md:w-[45%]">
-            <div className="flex h-64 items-center justify-center rounded-2xl bg-asisa-blue-light">
-              <div className="text-center">
-                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-asisa-blue">BUSCADOR OFICIAL</p>
-                <div className="mx-auto mt-3 h-px w-8 bg-mora-gold/50" aria-hidden="true" />
-                <p className="mt-3 text-xs text-text-secondary/60">asisa.es</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function KarolineGuidance() {
   const steps = [
     { n: "01", t: "Quién necesita cobertura", d: "Edad, provincia, número de asegurados y relación entre ellos." },
@@ -336,7 +322,7 @@ function KarolineGuidance() {
     { n: "04", t: "Qué condiciones deben revisarse", d: "Carencias, cuestionario de salud, fecha de inicio, precio y documentación." },
   ];
   return (
-    <section className="bg-surface-soft py-20 sm:py-28">
+    <section className="bg-white py-20 sm:py-28">
       <div className="container-section">
         <div className="mx-auto max-w-3xl">
           <h2 className="font-playfair text-3xl font-bold text-text-primary sm:text-4xl">Una recomendación empieza por conocer tu caso.</h2>
@@ -359,24 +345,22 @@ function KarolineGuidance() {
 
 function HealthFaqSection() {
   return (
-    <section className="bg-white py-20 sm:py-28">
-      <div className="container-section">
-        <div className="mx-auto max-w-3xl">
-          <span className="eyebrow">PREGUNTAS FRECUENTES</span>
-          <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">Resuelve tus dudas sobre el seguro de salud.</h2>
-          <div className="mt-10 space-y-0 divide-y divide-border-soft">
-            {faqItems.map((item, i) => (
-              <details key={i} className="group py-4">
-                <summary className="flex cursor-pointer items-center justify-between text-sm font-semibold text-text-primary transition-colors hover:text-asisa-blue list-none">
-                  {item.q}
-                  <span className="ml-4 flex-shrink-0 text-xs text-mora-gold transition-transform group-open:rotate-45">+</span>
-                </summary>
-                <p className="mt-3 text-sm text-text-secondary leading-relaxed pr-8">{item.a}</p>
-              </details>
-            ))}
-          </div>
+    <div>
+      <div className="mx-auto max-w-3xl">
+        <span className="eyebrow">PREGUNTAS FRECUENTES</span>
+        <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">Resuelve tus dudas sobre el seguro de salud.</h2>
+        <div className="mt-10 space-y-0 divide-y divide-border-soft">
+          {faqItems.map((item, i) => (
+            <details key={i} className="group py-4">
+              <summary className="flex cursor-pointer items-center justify-between text-sm font-semibold text-text-primary transition-colors hover:text-asisa-blue list-none">
+                {item.q}
+                <span className="ml-4 flex-shrink-0 text-xs text-mora-gold transition-transform group-open:rotate-45">+</span>
+              </summary>
+              <p className="mt-3 text-sm text-text-secondary leading-relaxed pr-8">{item.a}</p>
+            </details>
+          ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

@@ -3,6 +3,7 @@ import { siteConfig } from "@/lib/site-config";
 import Link from "next/link";
 import BrandLogo from "@/components/brand/BrandLogo";
 import ContactForm from "@/components/shared/ContactForm";
+import SectionBand from "@/components/layout/SectionBand";
 
 export const metadata: Metadata = {
   title: "Sobre Karoline Mora | Grupo Mora Seguros",
@@ -48,7 +49,7 @@ const expectations = [
 export default function QuienesSomosPage() {
   return (
     <>
-      {/* Hero editorial asimétrico */}
+      {/* Hero editorial asimétrico — white with surface-blue visual */}
       <section className="relative overflow-hidden bg-white">
         <div className="container-section">
           <div className="flex min-h-[500px] flex-col items-center gap-12 py-16 md:flex-row md:py-0">
@@ -113,39 +114,37 @@ export default function QuienesSomosPage() {
         </div>
       </section>
 
-      {/* Cómo trabaja — Sección editorial */}
-      <section className="bg-surface-soft py-20 sm:py-24">
-        <div className="container-section">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-playfair text-3xl font-bold text-text-primary sm:text-4xl">
-              Una atención directa, de principio a fin.
-            </h2>
-            <p className="mt-4 text-text-secondary leading-relaxed max-w-xl mx-auto">
-              Cada consulta comienza comprendiendo la situación concreta y revisando
-              qué aspectos resultan relevantes antes de contratar.
-            </p>
-          </div>
-          <div className="mx-auto mt-14 max-w-3xl divide-y divide-border-soft">
-            {processSteps.map((step) => (
-              <div key={step.number} className="flex items-start gap-5 py-6">
-                <span className="flex-shrink-0 text-xs font-semibold text-mora-gold">
-                  {step.number}
-                </span>
-                <div>
-                  <h3 className="text-base font-semibold text-text-primary">
-                    {step.title}
-                  </h3>
-                  <p className="mt-1 text-sm text-text-secondary leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+      {/* Cómo trabaja — warm (proceso editorial) */}
+      <SectionBand tone="warm" size="default">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="font-playfair text-3xl font-bold text-text-primary sm:text-4xl">
+            Una atención directa, de principio a fin.
+          </h2>
+          <p className="mt-4 text-text-secondary leading-relaxed max-w-xl mx-auto">
+            Cada consulta comienza comprendiendo la situación concreta y revisando
+            qué aspectos resultan relevantes antes de contratar.
+          </p>
         </div>
-      </section>
+        <div className="mx-auto mt-14 max-w-3xl divide-y divide-border-soft">
+          {processSteps.map((step) => (
+            <div key={step.number} className="flex items-start gap-5 py-6">
+              <span className="flex-shrink-0 text-xs font-semibold text-mora-gold">
+                {step.number}
+              </span>
+              <div>
+                <h3 className="text-base font-semibold text-text-primary">
+                  {step.title}
+                </h3>
+                <p className="mt-1 text-sm text-text-secondary leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </SectionBand>
 
-      {/* Credencial Profesional */}
+      {/* Credencial Profesional — navy */}
       <section className="bg-mora-navy py-16 sm:py-20">
         <div className="container-section">
           <div className="mx-auto max-w-3xl">
@@ -191,32 +190,30 @@ export default function QuienesSomosPage() {
         </div>
       </section>
 
-      {/* Relación con ASISA */}
-      <section className="bg-white py-16 sm:py-20">
-        <div className="container-section">
-          <div className="mx-auto max-w-3xl">
-            <div className="border-l-4 border-asisa-blue pl-6">
-              <h2 className="font-playfair text-2xl font-bold text-text-primary sm:text-3xl">
-                La relación profesional con ASISA.
-              </h2>
-              <p className="mt-4 text-text-secondary leading-relaxed">
-                {siteConfig.ownerName} desarrolla su actividad como agente de seguros
-                exclusivo de {siteConfig.insurerShortName}. Esto significa que participa
-                en la distribución de seguros ofrecidos por dicha entidad, sujetos a sus
-                condiciones y criterios de aceptación.
-              </p>
-              <p className="mt-3 text-text-secondary leading-relaxed">
-                La disponibilidad, el precio, las coberturas y la contratación dependen
-                de la modalidad y de las condiciones establecidas por la entidad
-                aseguradora.
-              </p>
-            </div>
+      {/* Relación con ASISA — blue-soft */}
+      <SectionBand tone="blue-soft" size="default">
+        <div className="mx-auto max-w-3xl">
+          <div className="border-l-4 border-asisa-blue pl-6">
+            <h2 className="font-playfair text-2xl font-bold text-text-primary sm:text-3xl">
+              La relación profesional con ASISA.
+            </h2>
+            <p className="mt-4 text-text-secondary leading-relaxed">
+              {siteConfig.ownerName} desarrolla su actividad como agente de seguros
+              exclusivo de {siteConfig.insurerShortName}. Esto significa que participa
+              en la distribución de seguros ofrecidos por dicha entidad, sujetos a sus
+              condiciones y criterios de aceptación.
+            </p>
+            <p className="mt-3 text-text-secondary leading-relaxed">
+              La disponibilidad, el precio, las coberturas y la contratación dependen
+              de la modalidad y de las condiciones establecidas por la entidad
+              aseguradora.
+            </p>
           </div>
         </div>
-      </section>
+      </SectionBand>
 
-      {/* Qué puedes esperar */}
-      <section className="bg-surface-soft py-16 sm:py-20">
+      {/* Qué puedes esperar — white */}
+      <section className="bg-white py-16 sm:py-20">
         <div className="container-section">
           <div className="mx-auto max-w-3xl">
             <h2 className="font-playfair text-2xl font-bold text-text-primary sm:text-3xl">
@@ -234,8 +231,8 @@ export default function QuienesSomosPage() {
         </div>
       </section>
 
-      {/* Cierre */}
-      <section className="bg-navy py-16 text-white sm:py-20">
+      {/* Cierre — asisa-blue */}
+      <section className="bg-asisa-blue py-16 text-white sm:py-20">
         <div className="container-section">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="font-playfair text-3xl font-bold text-white sm:text-4xl">

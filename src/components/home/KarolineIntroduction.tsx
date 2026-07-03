@@ -6,8 +6,8 @@ import { siteConfig } from "@/lib/site-config";
 
 export default function KarolineIntroduction() {
   return (
-    <section className="bg-surface-warm py-20 sm:py-28">
-      <div className="container-section">
+    <div>
+      <div>
         <div className="flex flex-col gap-12 md:flex-row">
           {/* Left column - Visual (46%) */}
           <div className="md:w-[46%]">
@@ -67,6 +67,6 @@ export default function KarolineIntroduction() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

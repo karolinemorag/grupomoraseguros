@@ -23,7 +23,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: {
     default: siteConfig.seo.defaultTitle,
-    template: `%s | ${siteConfig.name}`,
+    template: `%s | ${siteConfig.brandName}`,
   },
   description: siteConfig.seo.defaultDescription,
   keywords: siteConfig.seo.keywords,
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description: siteConfig.seo.defaultDescription,
     locale: "es_ES",
     type: "website",
-    siteName: siteConfig.name,
+    siteName: siteConfig.brandName,
   },
   twitter: {
     card: "summary_large_image",

@@ -36,7 +36,7 @@ const contactMethods = [
   {
     icon: <MapPin className="h-6 w-6" />,
     title: "Dirección",
-    value: siteConfig.direccion,
+    value: siteConfig.professionalAddress,
     href: "#",
     label: "Ver en mapa",
   },

@@ -16,7 +16,7 @@ const solutions = [
     title: "Acceder a atención sanitaria privada.",
     description:
       "Revisa modalidades, copagos, carencias, servicios, cuadro médico y condiciones de contratación.",
-    href: "/contacto",
+    href: "/seguros/salud",
   },
   {
     number: "02",

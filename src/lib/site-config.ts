@@ -17,6 +17,20 @@ export const siteConfig = {
   social: {
     instagram: "https://www.instagram.com/grupomoraseguros/",
   },
+  whatsappMessages: {
+    default:
+      "Hola, Karoline. He visitado la web de Grupo Mora Seguros y quisiera recibir información.",
+    decesos:
+      "Hola, Karoline. He visitado la página de seguro de decesos de Grupo Mora Seguros y quisiera recibir información.",
+    vida:
+      "Hola, Karoline. Quisiera revisar opciones de seguro de vida.",
+    mascotas:
+      "Hola, Karoline. Quiero información sobre el seguro para mascotas.",
+    internacional:
+      "Hola, Karoline. Necesito orientación sobre un seguro médico para estudiar o residir en España.",
+    revision:
+      "Hola, Karoline. Me gustaría solicitar una revisión personalizada de mis seguros.",
+  },
   seo: {
     defaultTitle:
       "Grupo Mora Seguros | Asesoramiento personal en seguros en Madrid",

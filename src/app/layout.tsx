@@ -3,6 +3,7 @@ import { Playfair_Display, Inter } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CTABar from "@/components/layout/CTABar";
+import CookieConsent from "@/components/shared/CookieConsent";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -58,6 +59,7 @@ export default function RootLayout({
         <main className="min-h-screen">{children}</main>
         <Footer />
         <CTABar />
+        <CookieConsent />
       </body>
     </html>
   );

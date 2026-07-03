@@ -32,20 +32,36 @@ export const procedures = [
 ];
 
 export const requirements = [
-  { label: "Entidad aseguradora", desc: "Que esté autorizada para operar en España." },
-  { label: "Alcance de la asistencia", desc: "Que las prestaciones respondan a lo exigido para el procedimiento." },
-  { label: "Copagos, carencias y límites", desc: "Comprobar si la oficina competente exige expresamente que no existan." },
-  { label: "Reembolso", desc: "Determinados consulados indican que no se admiten modalidades basadas en reembolso." },
-  { label: "Vigencia", desc: "Que las fechas coincidan con el periodo que debe acreditarse." },
-  { label: "Certificado", desc: "Que identifique correctamente a la persona asegurada, la modalidad y el periodo contratado." },
+  { label: "Entidad autorizada para operar en España.", desc: "Que esté autorizada para operar en España." },
+  { label: "Alcance de la asistencia.", desc: "Que las prestaciones respondan a lo exigido para el procedimiento." },
+  { label: "Copagos, carencias y límites.", desc: "Comprobar si la oficina competente exige expresamente que no existan." },
+  { label: "Modalidades de reembolso.", desc: "Determinados consulados indican que no se admiten modalidades basadas en reembolso." },
+  { label: "Vigencia del seguro.", desc: "Que las fechas coincidan con el periodo que debe acreditarse." },
+  { label: "Identificación y contenido del certificado.", desc: "Que identifique correctamente a la persona asegurada, la modalidad y el periodo contratado." },
 ];
 
 export const processSteps = [
-  { n: "01", t: "Compartes el trámite", d: "Indicas si se trata de estudios, residencia, familiares u otra situación." },
-  { n: "02", t: "Revisáis las fechas", d: "Se comprueban inicio previsto, duración y número de personas." },
-  { n: "03", t: "Karoline explica las modalidades", d: "Revisa contigo las alternativas disponibles y sus condiciones principales." },
-  { n: "04", t: "Se completa la contratación", d: "La entidad aseguradora valora y formaliza la contratación conforme a sus procedimientos." },
-  { n: "05", t: "Recibes la documentación", d: "Se emite la documentación correspondiente al seguro contratado." },
+  { n: "01", t: "Compartes el trámite.", d: "Indicas si se trata de estudios, residencia, familiares u otra situación." },
+  { n: "02", t: "Revisáis las fechas.", d: "Se comprueban inicio previsto, duración y número de personas." },
+  { n: "03", t: "Karoline explica las modalidades.", d: "Revisa contigo las alternativas disponibles y sus condiciones principales." },
+  { n: "04", t: "La entidad aseguradora valora y formaliza.", d: "La contratación se formaliza conforme a los procedimientos de la entidad aseguradora." },
+  { n: "05", t: "Recibes la documentación.", d: "Se emite la documentación correspondiente al seguro contratado." },
+];
+
+export const documents = [
+  "Póliza o condiciones particulares.",
+  "Certificado del seguro, cuando proceda.",
+  "Recibo o justificante correspondiente.",
+  "Documentación informativa del producto.",
+];
+
+export const initialData = [
+  "Tipo de trámite.",
+  "Oficina consular o lugar donde se presentará.",
+  "Fecha prevista de inicio.",
+  "Duración aproximada.",
+  "Número de personas y edades aproximadas.",
+  "Provincia española de destino, cuando se conozca.",
 ];
 
 export const faqItems = [

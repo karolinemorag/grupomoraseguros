@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Seguros y soluciones de protección | Grupo Mora Seguros",
+  title: "Seguros y soluciones de protección",
   description:
     "Conoce las soluciones de salud, vida, decesos, mascotas e internacional sobre las que Karoline Mora puede orientarte de forma personal.",
 };

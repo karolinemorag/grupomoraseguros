@@ -8,7 +8,7 @@ import { siteConfig } from "@/lib/site-config";
 const mainLinks = [
   { label: "Inicio", href: "/" },
   { label: "Seguros", href: "/seguros" },
-  { label: "Estudiantes internacionales", href: "/estudiantes-internacionales" },
+  { label: "Internacional", href: "/estudiantes-internacionales" },
   { label: "Ayuda y asistencia", href: "/asistencia-24h" },
   { label: "Guías", href: "/blog" },
   { label: "Sobre Karoline", href: "/quienes-somos" },
@@ -158,7 +158,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-8 border-t border-white/10 pt-8 text-center">
           <p className="text-sm text-white/50">
-            &copy; {new Date().getFullYear()} Grupo Mora. Todos los derechos
+            &copy; {new Date().getFullYear()} {siteConfig.brandName}. Todos los derechos
             reservados.
           </p>
         </div>

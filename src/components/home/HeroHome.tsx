@@ -3,10 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { siteConfig } from "@/lib/site-config";
+import { siteImages } from "@/lib/image-library";
 import { ArrowRight, MessageCircle } from "lucide-react";
 
 export default function HeroHome() {
   const whatsappUrl = `https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, "")}`;
+  const img = siteImages.homeMadrid;
 
   return (
     <section className="relative overflow-hidden bg-white pt-8 md:pt-10" aria-label="Hero principal">
@@ -56,16 +58,17 @@ export default function HeroHome() {
             </div>
           </div>
 
-          {/* Right column - Editorial image (45%) */}
+          {/* Right column - Madrid hero image (45%) */}
           <div className="relative w-full md:w-[45%] md:self-stretch">
-            <div className="relative h-[420px] overflow-hidden rounded-2xl md:h-[560px]">
+            <div className="relative h-[420px] overflow-hidden rounded-xl md:h-[560px]">
               <Image
-                src="/images/hero-madrid-architecture.webp"
-                alt="Arquitectura contemporánea de Madrid"
+                src={img.src}
+                alt={img.alt}
                 fill
-                sizes="(max-width: 768px) 100vw, 45vw"
-                className="object-cover object-[center_30%]"
                 priority
+                sizes="(max-width: 768px) 100vw, 45vw"
+                className="object-cover"
+                style={{ objectPosition: img.objectPosition }}
               />
             </div>
           </div>

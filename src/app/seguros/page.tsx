@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site-config";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import SectionBand from "@/components/layout/SectionBand";
+import { siteImages } from "@/lib/image-library";
 
 export const metadata: Metadata = {
   title: "Seguros y soluciones de protección",
@@ -119,15 +121,21 @@ export default function SegurosPage() {
               </div>
             </div>
             <div className="relative w-full md:w-[42%] md:self-stretch">
-              <div className="relative flex h-full min-h-[300px] items-center justify-center overflow-hidden rounded-2xl bg-asisa-blue-light md:min-h-[400px]">
-                <div className="p-8 text-center">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-asisa-blue">
+              <div className="relative h-full min-h-[300px] overflow-hidden rounded-xl bg-asisa-blue-light md:min-h-[400px]">
+                <Image
+                  src={siteImages.insuranceHub.src}
+                  alt={siteImages.insuranceHub.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 42vw"
+                  className="object-cover"
+                  style={{ objectPosition: siteImages.insuranceHub.objectPosition }}
+                />
+                <div className="absolute inset-0 bg-asisa-blue/5" aria-hidden="true" />
+                <div className="absolute bottom-4 left-4 right-4 p-4">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/90">
                     SALUD &middot; VIDA &middot; FAMILIA &middot; FUTURO
                   </p>
-                  <div className="mx-auto mt-6 h-px w-12 bg-mora-gold/50" aria-hidden="true" />
-                  <p className="mt-6 text-sm text-text-secondary/60 max-w-xs mx-auto">
-                    Cada situación requiere una revisión distinta.
-                  </p>
+                  <div className="mt-2 h-px w-10 bg-mora-gold/60" aria-hidden="true" />
                 </div>
               </div>
             </div>

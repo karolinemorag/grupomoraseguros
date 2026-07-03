@@ -69,8 +69,8 @@ export default function Navbar() {
           {/* Brand */}
           <BrandLockup />
 
-          {/* Desktop nav */}
-          <div className="hidden items-center gap-1 lg:flex">
+          {/* Desktop nav - show only when enough space (1536px+) */}
+          <div className="hidden items-center gap-1 2xl:flex">
             {navItems.map((item) => {
               const isActive = pathname === item.href;
               return (
@@ -109,10 +109,10 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile hamburger */}
+          {/* Mobile hamburger - show until 1535px */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="flex h-10 w-10 items-center justify-center rounded-lg text-text-primary hover:bg-surface-soft lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-lg text-text-primary hover:bg-surface-soft 2xl:hidden"
             aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={isOpen}
           >
@@ -124,7 +124,7 @@ export default function Navbar() {
       {/* Mobile Drawer */}
       {isOpen && (
         <div
-          className="fixed inset-0 top-[72px] z-40 flex flex-col bg-white md:hidden"
+          className="fixed inset-0 top-[72px] z-40 flex flex-col bg-white 2xl:hidden"
           role="dialog"
           aria-modal="true"
           aria-label="Menú de navegación"

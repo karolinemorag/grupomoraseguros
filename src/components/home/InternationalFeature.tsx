@@ -36,7 +36,7 @@ export default function InternationalFeature() {
   const whatsappUrl = `https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, "")}`;
 
   return (
-    <section className="bg-surface-warm py-20 sm:py-28">
+    <section className="bg-[#EFF6FC] py-20 sm:py-28">
       <div className="container-section">
         <div className="flex flex-col gap-12 md:flex-row">
           {/* Left column - Visual (58%) */}

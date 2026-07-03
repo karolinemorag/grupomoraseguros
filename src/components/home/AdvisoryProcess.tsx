@@ -32,7 +32,7 @@ const steps = [
 
 export default function AdvisoryProcess() {
   return (
-    <section className="bg-mora-navy py-20 sm:py-28">
+    <section className="bg-[#004A97] py-20 sm:py-28">
       <div className="container-section">
         <div className="flex flex-col gap-12 md:flex-row">
           {/* Left column (40%) */}

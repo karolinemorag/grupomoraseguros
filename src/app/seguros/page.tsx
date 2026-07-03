@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site-config";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import SectionBand from "@/components/layout/SectionBand";
 
 export const metadata: Metadata = {
   title: "Seguros y soluciones de protección",
@@ -226,7 +227,7 @@ export default function SegurosPage() {
       </section>
 
       {/* Papel de Karoline */}
-      <section className="bg-surface-soft py-20 sm:py-28">
+      <SectionBand tone="blue-soft">
         <div className="container-section">
           <div className="mx-auto max-w-3xl">
             <span className="eyebrow">ORIENTACIÓN PERSONAL</span>
@@ -254,16 +255,16 @@ export default function SegurosPage() {
             </div>
           </div>
         </div>
-      </section>
+      </SectionBand>
 
       {/* CTA final */}
-      <section className="bg-white py-20 sm:py-28">
+      <section className="bg-asisa-blue py-20 sm:py-28 text-white">
         <div className="container-section">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="font-playfair text-3xl font-bold text-text-primary sm:text-4xl">
+            <h2 className="font-playfair text-3xl font-bold text-white sm:text-4xl">
               ¿Todavía no sabes por dónde empezar?
             </h2>
-            <p className="mt-4 text-text-secondary leading-relaxed">
+            <p className="mt-4 text-white/70 leading-relaxed">
               No necesitas conocer el nombre de la póliza. Cuéntale a Karoline qué
               quieres proteger y podrá ayudarte a identificar las alternativas que
               conviene revisar.
@@ -271,7 +272,7 @@ export default function SegurosPage() {
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/contacto"
-                className="btn-primary h-12 px-8 text-sm"
+                className="inline-flex h-12 items-center justify-center rounded-lg bg-white px-8 text-sm font-semibold text-asisa-blue transition-colors hover:bg-white/90"
               >
                 Contar mi situación
               </Link>
@@ -279,7 +280,7 @@ export default function SegurosPage() {
                 href={`https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, "")}?text=${encodeURIComponent("Hola, Karoline. Quiero orientación sobre qué tipo de seguro puede adaptarse a mi situación.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium text-text-secondary transition-colors hover:text-asisa-blue"
+                className="text-sm font-medium text-white/70 transition-colors hover:text-white"
               >
                 Hablar por WhatsApp &rarr;
               </a>

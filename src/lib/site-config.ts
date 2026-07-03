@@ -17,6 +17,8 @@ export const siteConfig = {
   // Email pendiente de confirmación
   contactEmail: "",
   privacyEmail: "",
+  // Fotografía profesional de Karoline (null mientras no esté disponible)
+  karolinePortrait: null as string | null,
   social: {
     instagram: "https://www.instagram.com/grupomoraseguros/",
   },

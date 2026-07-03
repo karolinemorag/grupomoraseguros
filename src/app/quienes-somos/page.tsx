@@ -1,63 +1,52 @@
 import PageHero from "@/components/shared/PageHero";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import ContactForm from "@/components/shared/ContactForm";
-import TrustBadges from "@/components/shared/TrustBadges";
-import { Shield, Heart, Users, Star } from "lucide-react";
+import { siteConfig } from "@/lib/site-config";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Quiénes somos",
+  title: "Sobre Karoline Mora",
   description:
-    "Conoce a Grupo Mora, agencia exclusiva de seguros en Madrid. Más de [X] años de experiencia ofreciendo protección y tranquilidad a familias madrileñas.",
+    "Conoce a Karoline Mora, agente de seguros exclusivo de ASISA en Madrid. Asesoramiento personalizado con el respaldo de una entidad aseguradora líder.",
 };
-
-const values = [
-  {
-    icon: <Heart className="h-8 w-8" />,
-    title: "Cercanía",
-    description: "Te tratamos como a uno más de la familia, con calidez y respeto.",
-  },
-  {
-    icon: <Shield className="h-8 w-8" />,
-    title: "Transparencia",
-    description: "Te explicamos cada detalle con claridad, sin letra pequeña ni sorpresas.",
-  },
-  {
-    icon: <Users className="h-8 w-8" />,
-    title: "Compromiso",
-    description: "Estamos contigo en cada paso, antes y después de contratar.",
-  },
-  {
-    icon: <Star className="h-8 w-8" />,
-    title: "Profesionalidad",
-    description: "Nuestro equipo está formado por expertos en seguros con años de experiencia.",
-  },
-];
 
 export default function QuienesSomosPage() {
   return (
     <>
       <PageHero
-        title="Quiénes somos"
-        subtitle="Conoce a Grupo Mora, tu agencia de confianza en Madrid para proteger lo que más importa."
+        title="Sobre Karoline Mora"
+        subtitle="Una persona real al otro lado del teléfono, con el respaldo de una entidad aseguradora de confianza."
       />
 
       <SectionWrapper background="white">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-heading text-3xl font-bold text-navy sm:text-4xl">
-            Nuestra historia
+            Karoline Mora
           </h2>
-          <p className="mt-4 text-lg text-gray-dark/80">
-            Grupo Mora nace con la vocación de ofrecer un servicio de seguros
-            diferente, basado en la confianza, la cercanía y el trato
-            personalizado. Creemos que cada persona y cada familia merecen una
-            atención exclusiva y un asesoramiento adaptado a sus necesidades
-            reales.
+          <p className="mt-2 text-lg font-medium text-gold">
+            {siteConfig.professionalStatus}
           </p>
-          <p className="mt-4 text-lg text-gray-dark/80">
-            Como agencia exclusiva de [Nombre de la aseguradora] en Madrid,
-            trabajamos para ofrecerte la mejor protección con el respaldo de una
-            compañía líder, pero con el trato cercano de siempre.
+          <div className="mx-auto mt-2 inline-block rounded-full bg-navy/5 px-4 py-1 text-sm text-navy/70">
+            DGSFP: {siteConfig.dgsfpCode} ·{" "}
+            <a
+              href="https://www.dgsfp.mineco.gob.es/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gold underline hover:text-gold-dark"
+            >
+              Consultar inscripción
+            </a>
+          </div>
+          <p className="mt-8 text-lg text-gray-dark/80 leading-relaxed">
+            Grupo Mora Seguros es la marca profesional de {siteConfig.ownerName},{" "}
+            {siteConfig.professionalStatus}. Su trabajo consiste en escuchar cada
+            caso, explicar las alternativas disponibles y acompañar al cliente
+            durante el proceso de contratación.
+          </p>
+          <p className="mt-4 text-lg text-gray-dark/80 leading-relaxed">
+            Con despacho profesional en {siteConfig.professionalAddress}, ofrece
+            una atención cercana y personalizada, orientada a que cada persona
+            entienda las coberturas que contrata y tome decisiones informadas.
           </p>
         </div>
       </SectionWrapper>
@@ -65,23 +54,41 @@ export default function QuienesSomosPage() {
       <SectionWrapper background="light">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-heading text-3xl font-bold text-navy sm:text-4xl">
-            Nuestros valores
+            Cómo trabaja
           </h2>
           <p className="mt-4 text-lg text-gray-dark/80">
-            Son los pilares que guían nuestro trabajo cada día.
+            Su enfoque se basa en tres principios:
           </p>
         </div>
-
-        <div className="mt-12 grid gap-8 sm:grid-cols-2">
-          {values.map((value) => (
-            <div key={value.title} className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-              <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-navy/5 text-navy">
-                {value.icon}
-              </div>
+        <div className="mx-auto mt-10 grid max-w-4xl gap-6 sm:grid-cols-3">
+          {[
+            {
+              number: "1",
+              title: "Escucha",
+              desc: "Entiende tu situación, tus necesidades y lo que buscas proteger.",
+            },
+            {
+              number: "2",
+              title: "Explica",
+              desc: "Te presenta las opciones disponibles con claridad, sin tecnicismos ni letra pequeña comercial.",
+            },
+            {
+              number: "3",
+              title: "Acompaña",
+              desc: "Te guía durante todo el proceso, desde la consulta hasta la contratación.",
+            },
+          ].map((item) => (
+            <div
+              key={item.number}
+              className="rounded-2xl border border-gray-100 bg-white p-6 text-center shadow-sm"
+            >
+              <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-gold/10 text-xl font-bold text-gold">
+                {item.number}
+              </span>
               <h3 className="mt-4 font-heading text-xl font-bold text-navy">
-                {value.title}
+                {item.title}
               </h3>
-              <p className="mt-2 text-gray-dark/80">{value.description}</p>
+              <p className="mt-2 text-gray-dark/80">{item.desc}</p>
             </div>
           ))}
         </div>
@@ -90,16 +97,50 @@ export default function QuienesSomosPage() {
       <SectionWrapper background="white">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-heading text-3xl font-bold text-navy sm:text-4xl">
-            Por qué confiar en nosotros
+            Datos profesionales
           </h2>
-          <div className="mt-8">
-            <TrustBadges variant="light" />
+          <div className="mt-8 grid gap-4 text-left">
+            {[
+              { label: "Nombre", value: siteConfig.ownerName },
+              { label: "NIF", value: siteConfig.ownerNif },
+              { label: "Condición", value: siteConfig.professionalStatus },
+              {
+                label: "Entidad aseguradora",
+                value: siteConfig.insurerLegalName,
+              },
+              { label: "Clave DGSFP", value: siteConfig.dgsfpCode },
+              { label: "Dirección", value: siteConfig.professionalAddress },
+              { label: "Teléfono", value: siteConfig.telefono },
+            ].map((item) => (
+              <div
+                key={item.label}
+                className="flex items-center justify-between rounded-xl border border-gray-100 px-5 py-3"
+              >
+                <span className="text-sm font-medium text-navy">
+                  {item.label}
+                </span>
+                <span className="text-sm text-gray-dark/80">{item.value}</span>
+              </div>
+            ))}
           </div>
+          <p className="mt-6">
+            <a
+              href="https://www.dgsfp.mineco.gob.es/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium text-gold underline hover:text-gold-dark"
+            >
+              Consultar inscripción profesional en la DGSFP
+            </a>
+          </p>
         </div>
       </SectionWrapper>
 
       <SectionWrapper background="light">
-        <ContactForm title="¿Quieres conocernos mejor?" subtitle="Estaremos encantados de atenderte y resolver todas tus dudas." />
+        <ContactForm
+          title="¿Quieres hablar con Karoline?"
+          subtitle="Cuéntale tu situación y recibirás una orientación inicial sin compromiso de contratación."
+        />
       </SectionWrapper>
     </>
   );

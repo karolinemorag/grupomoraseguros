@@ -126,12 +126,28 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Disclaimer */}
+        {/* Professional identification */}
         <div className="mt-12 rounded-2xl bg-white/5 p-6 text-center">
-          <p className="text-sm text-white/60">
-            La información publicada en esta web tiene carácter orientativo.
-            Cada caso debe ser analizado de forma personalizada por un
-            profesional de Grupo Mora.
+          <p className="text-sm text-white/70">
+            <strong>{siteConfig.brandName}</strong> es la denominación comercial
+            utilizada por <strong>{siteConfig.ownerName}</strong>, NIF{" "}
+            {siteConfig.ownerNif}, {siteConfig.professionalStatus}, inscrita en
+            el Registro administrativo de distribuidores de seguros y reaseguros
+            con clave <strong>{siteConfig.dgsfpCode}</strong>.
+          </p>
+          <p className="mt-2 text-sm text-white/50">
+            {siteConfig.insurerLegalName} actúa como entidad aseguradora y es una
+            entidad tercera respecto de la titularidad de esta web.
+          </p>
+          <p className="mt-2">
+            <a
+              href="https://www.dgsfp.mineco.gob.es/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-gold underline hover:text-gold-light"
+            >
+              Consultar inscripción profesional
+            </a>
           </p>
         </div>
 

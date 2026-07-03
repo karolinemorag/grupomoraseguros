@@ -9,10 +9,10 @@ interface TrustBadgesProps {
 }
 
 const badges = [
-  "Atención 100% personalizada",
-  "Acompañamiento en todo el proceso",
+  "Atención directa con Karoline",
+  "Acompañamiento durante el proceso",
   "Trato cercano y profesional",
-  "Disponibles 24/7",
+  "Inscripción profesional verificable",
 ];
 
 export default function TrustBadges({

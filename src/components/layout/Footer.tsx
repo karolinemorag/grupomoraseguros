@@ -9,10 +9,9 @@ const mainLinks = [
   { label: "Inicio", href: "/" },
   { label: "Seguros", href: "/seguros" },
   { label: "Estudiantes internacionales", href: "/estudiantes-internacionales" },
-  { label: "Asistencia 24/7", href: "/asistencia-24h" },
-  { label: "Asesor interactivo", href: "/asesor-interactivo" },
-  { label: "Blog", href: "/blog" },
-  { label: "Quiénes somos", href: "/quienes-somos" },
+  { label: "Ayuda y asistencia", href: "/asistencia-24h" },
+  { label: "Guías", href: "/blog" },
+  { label: "Sobre Karoline", href: "/quienes-somos" },
   { label: "Contacto", href: "/contacto" },
 ];
 

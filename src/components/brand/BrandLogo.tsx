@@ -11,27 +11,36 @@ interface BrandLogoProps {
   className?: string;
 }
 
-const config: Record<BrandLogoVariant, { width: number; height: number; className: string; priority?: boolean }> = {
+/**
+ * BrandLogo component — centralized logo display.
+ * Logo is a JPG with ~1.52:1 aspect ratio.
+ * We set width and let height be auto via object-contain to preserve original proportions.
+ */
+
+const config: Record<
+  BrandLogoVariant,
+  { width: number; height: number; className: string; priority?: boolean }
+> = {
   header: {
-    width: 260,
-    height: 72,
-    className: "h-[62px] w-auto object-contain md:h-[72px]",
+    width: 240,
+    height: 158, // matches ~1.52:1 ratio
+    className: "h-[56px] w-auto object-contain md:h-[64px]",
     priority: true,
   },
   mobile: {
-    width: 200,
-    height: 52,
-    className: "h-[44px] w-auto object-contain",
+    width: 180,
+    height: 118,
+    className: "h-[42px] w-auto object-contain",
     priority: true,
   },
   footer: {
-    width: 300,
-    height: 78,
+    width: 280,
+    height: 184,
     className: "h-[70px] w-auto object-contain",
   },
   institutional: {
-    width: 340,
-    height: 88,
+    width: 320,
+    height: 210,
     className: "h-[80px] w-auto object-contain",
   },
 };
@@ -48,7 +57,7 @@ export default function BrandLogo({ variant = "header", className }: BrandLogoPr
       className={cn(cfg.className, className)}
       priority={cfg.priority}
       loading={cfg.priority ? undefined : "lazy"}
-      sizes={`(max-width: 768px) ${cfg.width * 0.75}px, ${cfg.width}px`}
+      sizes={`(max-width: 768px) ${Math.round(cfg.width * 0.75)}px, ${cfg.width}px`}
     />
   );
 

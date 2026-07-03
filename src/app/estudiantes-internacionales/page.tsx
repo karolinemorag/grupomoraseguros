@@ -1,375 +1,438 @@
-"use client";
+import type { Metadata } from "next";
+import { siteConfig } from "@/lib/site-config";
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowRight, ExternalLink } from "lucide-react";
+import { procedures, requirements, processSteps, faqItems, buildContactUrl } from "@/components/insurance/international/international-content";
 
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { Send, CheckCircle, AlertCircle, Loader2, MessageCircle } from "lucide-react";
-import PageHero from "@/components/shared/PageHero";
-import SectionWrapper from "@/components/shared/SectionWrapper";
-import { CTAWhatsApp, CTACall } from "@/components/shared/CTAButtons";
-import { cn } from "@/lib/utils";
-
-const internationalSchema = z.object({
-  nombre: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
-  email: z.string().email("Introduce un email válido"),
-  telefono: z.string().optional(),
-  pais_origen: z.string().min(2, "Indica tu país de origen"),
-  tipo_tramite: z.enum(["visado_estudiante", "residencia_no_lucrativa", "otro"], {
-    required_error: "Selecciona una opción",
-  }),
-  mensaje: z.string().optional(),
-  privacidad: z.literal(true, {
-    errorMap: () => ({ message: "Debes aceptar la política de privacidad" }),
-  }),
-});
-
-type InternationalFormValues = z.infer<typeof internationalSchema>;
-
-const headerMetadata = {
-  title: "Seguro para estudiantes internacionales en España | Grupo Mora",
+export const metadata: Metadata = {
+  title: "Seguro médico para estudiar o residir en España",
   description:
-    "Seguro de salud válido para solicitar residencia en España desde cualquier parte del mundo. Asesoramiento personalizado para estudiantes internacionales en Madrid.",
+    "Karoline Mora te ayuda a revisar el seguro médico, las fechas y la documentación necesaria para estudiar o residir en España.",
 };
 
-export default function EstudiantesInternacionalesPage() {
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<InternationalFormValues>({
-    resolver: zodResolver(internationalSchema),
-    defaultValues: {
-      tipo_tramite: undefined,
-      privacidad: false as any,
-    },
-  });
-
-  const onSubmit = async (data: InternationalFormValues) => {
-    setStatus("loading");
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (!res.ok) throw new Error("Error al enviar");
-      setStatus("success");
-      reset();
-    } catch {
-      setStatus("error");
-    }
-  };
-
-  const saberItems = [
-    "El seguro debe estar activo antes de solicitar el visado o la residencia.",
-    "Debe cubrir el territorio español durante toda tu estancia.",
-    "Es un requisito obligatorio para muchos trámites de extranjería.",
-    "En Grupo Mora te orientamos sobre las coberturas que se aceptan para este trámite.",
-  ];
-
-  const paraQuienItems = [
-    "Estudiantes universitarios o de posgrado que van a estudiar en España.",
-    "Personas que solicitan residencia no lucrativa o visado de estudiante.",
-    "Familias que acompañan a un estudiante y necesitan cobertura sanitaria.",
-    "Personas de cualquier nacionalidad que necesiten un seguro válido para extranjería.",
-  ];
-
-  const pasos = [
-    {
-      number: "01",
-      title: "Nos escribes",
-      description:
-        "Por WhatsApp o rellenando el formulario. Cuéntanos tu situación y tu trámite.",
-    },
-    {
-      number: "02",
-      title: "Te explicamos",
-      description:
-        "Analizamos qué cobertura necesitas según tu tipo de trámite y país de origen.",
-    },
-    {
-      number: "03",
-      title: "Gestionamos tu póliza",
-      description:
-        "Te entregamos la documentación lista para presentar con tu solicitud.",
-    },
-  ];
+export default function InternacionalPage() {
+  const whatsappUrl = `https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, "")}`;
+  const whatsappMsg = encodeURIComponent("Hola, Karoline. Estoy preparando un trámite para venir a España y necesito revisar el seguro médico, las fechas y la documentación.");
+  const contactUrl = `/contacto?tipo=contratar&interes=internacional`;
 
   return (
     <>
-      <PageHero
-        title="Seguro para estudiantes internacionales en España"
-        subtitle="Si vas a solicitar tu residencia en España desde el extranjero, necesitas un seguro de salud homologado. En Grupo Mora te lo gestionamos de forma rápida, clara y personalizada."
+      {/* JSON-LD FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqItems.map((item) => ({
+              "@type": "Question",
+              name: item.q,
+              acceptedAnswer: { "@type": "Answer", text: item.a },
+            })),
+          }),
+        }}
       />
 
-      {/* ¿Qué necesitas saber? */}
-      <SectionWrapper background="white">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="font-playfair text-3xl font-bold text-navy text-center sm:text-4xl">
-            ¿Qué necesitas saber?
-          </h2>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2">
-            {saberItems.map((item, i) => (
-              <div key={i} className="flex items-start gap-4 rounded-2xl bg-gray-light p-6">
-                <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-navy text-xs font-bold text-white">
-                  {i + 1}
-                </span>
-                <p className="text-gray-dark/80">{item}</p>
+      {/* Hero 57/43 */}
+      <section className="relative overflow-hidden bg-white">
+        <div className="container-section">
+          <div className="flex min-h-[520px] flex-col items-center gap-12 py-16 md:flex-row md:py-0">
+            <div className="w-full md:w-[57%] md:py-20">
+              <nav className="text-xs text-text-secondary/50 mb-4" aria-label="Breadcrumb">
+                <ol className="flex items-center gap-2">
+                  <li><Link href="/" className="hover:text-asisa-blue">Inicio</Link></li>
+                  <li aria-hidden="true">/</li>
+                  <li className="text-text-primary font-medium">Internacional</li>
+                </ol>
+              </nav>
+              <span className="eyebrow">SEGUROS PARA LLEGAR A ESPAÑA</span>
+              <h1 className="mt-6 text-display-lg text-text-primary">
+                Tu seguro empieza en la fecha correcta.
+              </h1>
+              <p className="mt-6 text-body-lg text-text-secondary leading-relaxed max-w-lg">
+                {siteConfig.ownerName} te ayuda a revisar la modalidad, la duración y la
+                documentación del seguro médico según el trámite que estás preparando para
+                venir a España.
+              </p>
+              <p className="mt-3 text-sm text-text-secondary">
+                Estudiantes, residentes y familiares pueden necesitar condiciones y periodos
+                diferentes.
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <Link href={contactUrl} className="btn-primary h-12 px-7 text-sm">
+                  Preparar mi caso
+                </Link>
+                <a href="#selector-tramite" className="btn-outline h-12 px-7 text-sm">
+                  Elegir mi trámite
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </a>
               </div>
-            ))}
+              <p className="mt-4 text-xs text-text-secondary/50">
+                Atención directa con {siteConfig.ownerName}, {siteConfig.professionalStatus}.
+              </p>
+            </div>
+            <div className="relative w-full md:w-[43%] md:self-stretch">
+              <InternationalArrivalVisual />
+            </div>
           </div>
         </div>
-      </SectionWrapper>
+      </section>
 
-      {/* ¿Para quién es? */}
-      <SectionWrapper background="light">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="font-playfair text-3xl font-bold text-navy text-center sm:text-4xl">
-            ¿Para quién es este seguro?
-          </h2>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2">
-            {paraQuienItems.map((item, i) => (
-              <div
-                key={i}
-                className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm"
-              >
-                <div className="flex items-start gap-4">
-                  <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gold/10 text-sm font-bold text-gold">
-                    ✓
-                  </span>
-                  <p className="text-gray-dark/80">{item}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </SectionWrapper>
-
-      {/* ¿Cómo funciona? */}
-      <SectionWrapper background="white">
-        <div className="mx-auto max-w-5xl">
-          <h2 className="font-playfair text-3xl font-bold text-navy text-center sm:text-4xl">
-            ¿Cómo funciona?
-          </h2>
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
-            {pasos.map((paso) => (
-              <div key={paso.number} className="text-center">
-                <span className="font-playfair text-5xl font-bold text-gold/60 sm:text-6xl">
-                  {paso.number}
-                </span>
-                <h3 className="mt-4 font-playfair text-xl font-bold text-navy">
-                  {paso.title}
-                </h3>
-                <p className="mt-3 leading-relaxed text-gray-dark/70">
-                  {paso.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </SectionWrapper>
-
-      {/* Aviso importante */}
-      <SectionWrapper background="white">
-        <div className="mx-auto max-w-4xl">
-          <div className="rounded-3xl bg-navy/5 border border-navy/10 p-8 text-center">
-            <p className="text-sm text-navy/80 leading-relaxed">
-              <strong className="text-navy">Aviso importante:</strong> La información de esta
-              página es orientativa. Cada trámite de extranjería tiene requisitos
-              específicos. Una persona de Grupo Mora revisará tu caso de forma
-              personalizada antes de recomendar ninguna cobertura.
-            </p>
-          </div>
-        </div>
-      </SectionWrapper>
-
-      {/* Formulario */}
-      <SectionWrapper background="light">
-        <div className="mx-auto max-w-2xl">
-          <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-sm sm:p-10">
-            <h2 className="font-playfair text-2xl font-bold text-navy sm:text-3xl">
-              Solicita información
+      {/* Introducción */}
+      <section className="bg-surface-warm py-16 sm:py-20">
+        <div className="container-section">
+          <div className="mx-auto max-w-3xl">
+            <span className="eyebrow">EL PUNTO DE PARTIDA</span>
+            <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">
+              Cada trámite tiene sus condiciones.
             </h2>
-            <p className="mt-2 text-gray-dark/70">
-              Cuéntanos tu caso y te orientamos sin compromiso.
+            <div className="mt-4 h-px w-12 bg-mora-gold" aria-hidden="true" />
+            <p className="mt-6 text-text-secondary leading-relaxed">
+              Para determinados visados y autorizaciones puede exigirse un seguro de
+              enfermedad contratado con una entidad autorizada para operar en España,
+              válido durante el periodo correspondiente y con las condiciones requeridas
+              para el procedimiento.
             </p>
-
-            {status === "success" ? (
-              <div className="mt-8 rounded-xl bg-trust/5 p-8 text-center">
-                <CheckCircle className="mx-auto h-12 w-12 text-[#25D366]" aria-hidden="true" />
-                <h3 className="mt-4 font-playfair text-xl font-bold text-navy">
-                  ¡Mensaje enviado!
-                </h3>
-                <p className="mt-2 text-gray-dark/70">
-                  Gracias por contactarnos. Te responderemos lo antes posible.
-                </p>
-              </div>
-            ) : (
-              <>
-                {/* CTAs principales */}
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                  <CTAWhatsApp className="flex-1" />
-                  <CTACall className="flex-1" />
-                </div>
-
-                <div className="mt-8 border-t border-gray-100 pt-8">
-                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
-                    <div className="grid gap-5 sm:grid-cols-2">
-                      <div>
-                        <label htmlFor="nombre" className="block text-sm font-medium text-navy">
-                          Nombre completo <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          id="nombre"
-                          type="text"
-                          {...register("nombre")}
-                          className="mt-1 block w-full rounded-xl border border-gray-300 px-4 py-3 text-sm text-navy placeholder:text-gray-mid focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/20"
-                          placeholder="Tu nombre"
-                        />
-                        {errors.nombre && <p className="mt-1 text-xs text-red-500">{errors.nombre.message}</p>}
-                      </div>
-
-                      <div>
-                        <label htmlFor="pais_origen" className="block text-sm font-medium text-navy">
-                          País de origen <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          id="pais_origen"
-                          type="text"
-                          {...register("pais_origen")}
-                          className="mt-1 block w-full rounded-xl border border-gray-300 px-4 py-3 text-sm text-navy placeholder:text-gray-mid focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/20"
-                          placeholder="Ej: Colombia, México, China..."
-                        />
-                        {errors.pais_origen && <p className="mt-1 text-xs text-red-500">{errors.pais_origen.message}</p>}
-                      </div>
-                    </div>
-
-                    <div className="grid gap-5 sm:grid-cols-2">
-                      <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-navy">
-                          Email <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          id="email"
-                          type="email"
-                          {...register("email")}
-                          className="mt-1 block w-full rounded-xl border border-gray-300 px-4 py-3 text-sm text-navy placeholder:text-gray-mid focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/20"
-                          placeholder="tu@email.com"
-                        />
-                        {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>}
-                      </div>
-
-                      <div>
-                        <label htmlFor="telefono" className="block text-sm font-medium text-navy">
-                          Teléfono (con código de país)
-                        </label>
-                        <input
-                          id="telefono"
-                          type="tel"
-                          {...register("telefono")}
-                          className="mt-1 block w-full rounded-xl border border-gray-300 px-4 py-3 text-sm text-navy placeholder:text-gray-mid focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/20"
-                          placeholder="Ej: +57 300 123 4567"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-navy">
-                        Tipo de trámite <span className="text-red-500">*</span>
-                      </label>
-                      <div className="mt-2 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                        {[
-                          { value: "visado_estudiante", label: "Visado de estudiante" },
-                          { value: "residencia_no_lucrativa", label: "Residencia no lucrativa" },
-                          { value: "otro", label: "Otro" },
-                        ].map((option) => (
-                          <label
-                            key={option.value}
-                            className="flex cursor-pointer items-center justify-center rounded-xl border border-gray-300 px-4 py-3 text-sm font-medium text-navy transition-all has-[:checked]:border-gold has-[:checked]:bg-gold/5 has-[:checked]:ring-1 has-[:checked]:ring-gold"
-                          >
-                            <input
-                              type="radio"
-                              value={option.value}
-                              {...register("tipo_tramite")}
-                              className="sr-only"
-                            />
-                            {option.label}
-                          </label>
-                        ))}
-                      </div>
-                      {errors.tipo_tramite && (
-                        <p className="mt-1 text-xs text-red-500">{errors.tipo_tramite.message}</p>
-                      )}
-                    </div>
-
-                    <div>
-                      <label htmlFor="mensaje" className="block text-sm font-medium text-navy">
-                        Mensaje (opcional)
-                      </label>
-                      <textarea
-                        id="mensaje"
-                        rows={3}
-                        {...register("mensaje")}
-                        className="mt-1 block w-full rounded-xl border border-gray-300 px-4 py-3 text-sm text-navy placeholder:text-gray-mid focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/20"
-                        placeholder="Cuéntanos más sobre tu situación..."
-                      />
-                    </div>
-
-                    <div>
-                      <label className="flex items-start gap-3">
-                        <input
-                          type="checkbox"
-                          {...register("privacidad")}
-                          className="mt-1 h-4 w-4 rounded border-gray-300 text-gold focus:ring-gold"
-                        />
-                        <span className="text-sm text-gray-dark/80">
-                          He leído y acepto la{" "}
-                          <a href="/politica-de-privacidad" className="text-gold underline" target="_blank">
-                            política de privacidad
-                          </a>{" "}
-                          <span className="text-red-500">*</span>
-                        </span>
-                      </label>
-                      {errors.privacidad && (
-                        <p className="mt-1 text-xs text-red-500">{errors.privacidad.message}</p>
-                      )}
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={status === "loading"}
-                      className="btn-navy h-12 w-full text-base disabled:opacity-50"
-                    >
-                      {status === "loading" ? (
-                        <>
-                          <Loader2 className="h-5 w-5 animate-spin" />
-                          Enviando...
-                        </>
-                      ) : (
-                        <>
-                          <Send className="h-5 w-5" />
-                          Enviar solicitud
-                        </>
-                      )}
-                    </button>
-
-                    {status === "error" && (
-                      <div className="flex items-center gap-2 rounded-lg bg-red-50 p-4 text-sm text-red-600">
-                        <AlertCircle className="h-5 w-5 flex-shrink-0" />
-                        Hubo un error al enviar. Inténtalo de nuevo.
-                      </div>
-                    )}
-                  </form>
-                </div>
-              </>
-            )}
+            <p className="mt-4 text-sm text-text-secondary/70">
+              La decisión sobre la validez y suficiencia de la documentación corresponde
+              a la autoridad competente.
+            </p>
           </div>
         </div>
-      </SectionWrapper>
+      </section>
+
+      {/* Selector de trámite */}
+      <InternationalProcedureNavigator />
+
+      {/* Dos modalidades */}
+      <InternationalProductPaths />
+
+      {/* Planificador de fechas */}
+      <ArrivalDatePlanner contactUrl={contactUrl} />
+
+      {/* Checklist de requisitos */}
+      <RequirementsChecklist />
+
+      {/* Recorrido con Karoline */}
+      <InternationalProcessSection />
+
+      {/* Documentación */}
+      <InsuranceDocumentsFeature />
+
+      {/* Qué información necesita Karoline */}
+      <DataNeededSection contactUrl={contactUrl} />
+
+      {/* FAQ */}
+      <InternationalFaqSection />
+
+      {/* CTA final */}
+      <section className="bg-mora-navy py-20 sm:py-28">
+        <div className="container-section">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-mora-gold">
+              PREPARAR LA LLEGADA
+            </span>
+            <h2 className="mt-4 font-playfair text-3xl font-bold text-white sm:text-4xl">
+              Revisemos las fechas antes de contratar.
+            </h2>
+            <p className="mt-4 text-white/60 leading-relaxed">
+              Cuéntale a Karoline qué trámite estás preparando, cuándo comenzará y cuánto
+              tiempo necesitas acreditar.
+            </p>
+            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Link href={contactUrl} className="btn-outline-white h-12 px-8 text-sm">
+                Preparar mi caso
+              </Link>
+              <a
+                href={`${whatsappUrl}?text=${whatsappMsg}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-white/70 transition-colors hover:text-white"
+              >
+                Hablar por WhatsApp &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
+  );
+}
+
+function InternationalArrivalVisual() {
+  return (
+    <div className="relative h-full min-h-[300px] overflow-hidden rounded-2xl md:min-h-[400px]">
+      <Image
+        src="/international-feature.jpg"
+        alt="Llegada a una ciudad contemporánea"
+        fill
+        sizes="(max-width: 768px) 100vw, 43vw"
+        className="object-cover"
+        priority
+      />
+      <div className="absolute bottom-4 left-4 space-y-0.5">
+        <span className="text-[10px] font-semibold tracking-[0.2em] text-white/80">MADRID</span>
+        <br />
+        <span className="text-[10px] font-light tracking-wider text-white/50">40.4168° N · 3.7038° W</span>
+        <br />
+        <span className="text-[10px] font-light tracking-wider text-white/40">ARRIVAL / START DATE / DURATION</span>
+      </div>
+    </div>
+  );
+}
+
+function InternationalProcedureNavigator() {
+  return (
+    <section className="bg-white py-20 sm:py-28" id="selector-tramite">
+      <div className="container-section">
+        <div className="flex flex-col gap-12 md:flex-row">
+          <div className="md:w-[35%] md:sticky md:top-32 md:self-start">
+            <span className="eyebrow">TU TRÁMITE</span>
+            <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">¿Qué estás preparando?</h2>
+            <p className="mt-4 text-text-secondary leading-relaxed max-w-sm">
+              Cada procedimiento puede requerir condiciones diferentes. Selecciona el que
+              más se acerca a tu situación.
+            </p>
+          </div>
+          <div className="md:w-[65%]">
+            <div className="divide-y divide-border-soft">
+              {procedures.map((p) => (
+                <Link
+                  key={p.value}
+                  href={buildContactUrl(p.value)}
+                  className="group flex items-start gap-6 py-5 transition-colors hover:bg-asisa-blue-light/30 focus-visible:outline-2 focus-visible:outline-asisa-blue focus-visible:outline-offset-2 sm:py-6"
+                >
+                  <span className="flex-shrink-0 text-xs font-semibold text-mora-gold">{p.number}</span>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg font-semibold text-text-primary sm:text-xl">{p.title}</h3>
+                    <p className="mt-1 text-sm text-text-secondary leading-relaxed">{p.description}</p>
+                  </div>
+                  <ArrowRight className="mt-1 h-4 w-4 flex-shrink-0 text-text-secondary transition-all group-hover:translate-x-1 group-hover:text-asisa-blue" aria-hidden="true" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function InternationalProductPaths() {
+  return (
+    <section className="bg-surface-soft py-20 sm:py-28">
+      <div className="container-section">
+        <div className="mx-auto max-w-4xl">
+          <span className="eyebrow">DOS MODALIDADES</span>
+          <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">Dos recorridos que no deben confundirse.</h2>
+          <div className="mt-10 grid gap-8 md:grid-cols-2">
+            <div className="border border-border-soft rounded-2xl p-8 bg-white">
+              <h3 className="text-lg font-bold text-text-primary">ASISA Health Students</h3>
+              <p className="mt-3 text-sm text-text-secondary leading-relaxed">
+                Orientado a estudiantes internacionales y determinados perfiles formativos.
+                Puede utilizarse para procedimientos de estudios cuando se cumplen las
+                condiciones correspondientes.
+              </p>
+              <div className="mt-6">
+                <Link href={buildContactUrl("estudios")} className="text-sm font-medium text-asisa-blue hover:underline">
+                  Revisar mi caso de estudios &rarr;
+                </Link>
+              </div>
+            </div>
+            <div className="border border-border-soft rounded-2xl p-8 bg-white">
+              <h3 className="text-lg font-bold text-text-primary">ASISA Health Residents</h3>
+              <p className="mt-3 text-sm text-text-secondary leading-relaxed">
+                Orientado a personas extranjeras que preparan determinados visados o
+                permisos de residencia. Debe revisarse según el procedimiento y
+                documentación requerida.
+              </p>
+              <div className="mt-6">
+                <Link href={buildContactUrl("residencia")} className="text-sm font-medium text-asisa-blue hover:underline">
+                  Revisar mi caso de residencia &rarr;
+                </Link>
+              </div>
+            </div>
+          </div>
+          <p className="mt-6 text-xs text-text-secondary/60 text-center max-w-2xl mx-auto">
+            El nombre del producto no determina por sí solo que sea válido para cualquier
+            procedimiento. Deben revisarse las condiciones del seguro y los requisitos de
+            la autoridad competente.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ArrivalDatePlanner({ contactUrl }: { contactUrl: string }) {
+  return (
+    <section className="bg-white py-20 sm:py-28">
+      <div className="container-section">
+        <div className="mx-auto max-w-3xl">
+          <span className="eyebrow">PLANIFICACIÓN</span>
+          <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">Tres fechas que deben encajar.</h2>
+          <div className="mt-10 space-y-0">
+            {[
+              { n: "01", t: "Presentación del trámite", d: "Fecha prevista de cita o presentación ante el consulado u oficina correspondiente." },
+              { n: "02", t: "Entrada o inicio de la actividad", d: "Fecha prevista de llegada, comienzo de estudios o inicio del periodo solicitado." },
+              { n: "03", t: "Fin de la cobertura", d: "Fecha hasta la que debe mantenerse el seguro según el periodo que se pretende acreditar." },
+            ].map((item, i) => (
+              <div key={i} className="flex items-start gap-5 border-t border-border-soft py-5 last:border-b">
+                <span className="flex-shrink-0 text-xs font-semibold text-mora-gold">{item.n}</span>
+                <div>
+                  <h3 className="text-base font-semibold text-text-primary">{item.t}</h3>
+                  <p className="mt-1 text-sm text-text-secondary">{item.d}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 text-xs text-text-secondary/60">
+            La fecha de inicio no debe elegirse automáticamente. Debe coordinarse con el
+            trámite y con las condiciones de contratación.
+          </p>
+          <div className="mt-6">
+            <Link href={contactUrl} className="btn-primary h-11 px-6 text-sm">
+              Revisar mis fechas con Karoline
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function RequirementsChecklist() {
+  return (
+    <section className="bg-mora-navy py-20 sm:py-28">
+      <div className="container-section">
+        <div className="mx-auto max-w-3xl">
+          <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-mora-gold">ANTES DE CONTRATAR</span>
+          <h2 className="mt-4 font-playfair text-3xl font-bold text-white sm:text-4xl">Qué conviene comprobar en la documentación oficial.</h2>
+          <div className="mt-10 divide-y divide-white/10">
+            {requirements.map((req, i) => (
+              <div key={i} className="flex items-start gap-5 py-5">
+                <span className="flex-shrink-0 text-xs font-light text-mora-gold/60">{String(i + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3 className="text-base font-semibold text-white">{req.label}</h3>
+                  <p className="mt-1 text-sm text-white/50">{req.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-xs text-white/30 leading-relaxed">
+            Los requisitos concretos pueden variar según el procedimiento, la oficina
+            consular, la normativa aplicable y las circunstancias de la persona solicitante.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function InternationalProcessSection() {
+  return (
+    <section className="bg-white py-20 sm:py-28">
+      <div className="container-section">
+        <div className="mx-auto max-w-3xl">
+          <span className="eyebrow">CÓMO TRABAJA KAROLINE</span>
+          <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">Un recorrido claro para tu llegada a España.</h2>
+          <div className="mt-10 divide-y divide-border-soft">
+            {processSteps.map((step) => (
+              <div key={step.n} className="flex items-start gap-5 py-5">
+                <span className="flex-shrink-0 text-xs font-semibold text-mora-gold">{step.n}</span>
+                <div>
+                  <h3 className="text-base font-semibold text-text-primary">{step.t}</h3>
+                  <p className="mt-1 text-sm text-text-secondary">{step.d}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function InsuranceDocumentsFeature() {
+  return (
+    <section className="bg-surface-soft py-20 sm:py-28">
+      <div className="container-section">
+        <div className="mx-auto max-w-3xl">
+          <span className="eyebrow">DOCUMENTACIÓN</span>
+          <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">Qué documentación puede acompañar a la contratación.</h2>
+          <div className="mt-10 space-y-3">
+            {["Póliza o condiciones particulares.", "Certificado del seguro, cuando proceda.", "Recibo o justificante correspondiente.", "Documentación informativa del producto."].map((item, i) => (
+              <div key={i} className="flex items-start gap-4 border border-border-soft rounded-xl bg-white p-5">
+                <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-mora-navy text-xs font-bold text-white">{i + 1}</span>
+                <span className="text-sm text-text-secondary self-center">{item}</span>
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 text-xs text-text-secondary/60">
+            Los documentos concretos dependen de la modalidad contratada y de los
+            procedimientos de la entidad aseguradora.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function DataNeededSection({ contactUrl }: { contactUrl: string }) {
+  return (
+    <section className="bg-white py-20 sm:py-28">
+      <div className="container-section">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="font-playfair text-3xl font-bold text-text-primary sm:text-4xl">Cinco datos permiten empezar a revisar el caso.</h2>
+          <div className="mt-8 space-y-3">
+            {[
+              "Tipo de trámite.",
+              "Oficina consular o lugar donde se presentará.",
+              "Fecha prevista de inicio.",
+              "Duración.",
+              "Número de personas y edades aproximadas.",
+            ].map((item, i) => (
+              <div key={i} className="flex items-start gap-4 border-t border-border-soft py-3">
+                <span className="flex-shrink-0 text-xs font-semibold text-mora-gold">{String(i + 1).padStart(2, "0")}</span>
+                <span className="text-sm text-text-secondary">{item}</span>
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 text-xs text-text-secondary/60">
+            Puede añadirse la provincia española donde se residirá.
+          </p>
+          <div className="mt-6">
+            <Link href={contactUrl} className="btn-primary h-11 px-6 text-sm">
+              Empezar con estos datos
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function InternationalFaqSection() {
+  return (
+    <section className="bg-surface-soft py-20 sm:py-28">
+      <div className="container-section">
+        <div className="mx-auto max-w-3xl">
+          <span className="eyebrow">PREGUNTAS FRECUENTES</span>
+          <h2 className="mt-4 font-playfair text-3xl font-bold text-text-primary sm:text-4xl">Resuelve tus dudas sobre el seguro para llegar a España.</h2>
+          <div className="mt-10 space-y-0 divide-y divide-border-soft">
+            {faqItems.map((item, i) => (
+              <details key={i} className="group py-4">
+                <summary className="flex cursor-pointer items-center justify-between text-sm font-semibold text-text-primary transition-colors hover:text-asisa-blue list-none">
+                  {item.q}
+                  <span className="ml-4 flex-shrink-0 text-xs text-mora-gold transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p className="mt-3 text-sm text-text-secondary leading-relaxed pr-8">{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

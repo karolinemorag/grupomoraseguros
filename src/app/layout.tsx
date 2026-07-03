@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Manrope, Playfair_Display, Inter } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import CTABar from "@/components/layout/CTABar";
+import MobileContactBar from "@/components/layout/MobileContactBar";
 import CookieConsent from "@/components/shared/CookieConsent";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
@@ -68,7 +68,7 @@ export default function RootLayout({
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />
-        <CTABar />
+        <MobileContactBar />
         <CookieConsent />
       </body>
     </html>

@@ -1,6 +1,7 @@
 "use client";
 
-import { CTAAdvice, CTAWhatsApp, CTAAppointment } from "@/components/shared/CTAButtons";
+import { CTAWhatsApp, CTAAppointment } from "@/components/shared/CTAButtons";
+import { siteConfig } from "@/lib/site-config";
 
 export default function HeroHome() {
   return (
@@ -19,27 +20,31 @@ export default function HeroHome() {
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-[#0F1F3D]/80" aria-hidden="true" />
+      <div className="absolute inset-0 bg-[#0F1F3D]/85" aria-hidden="true" />
 
       {/* Content */}
       <div className="container-section relative z-10 w-full pt-28 pb-20 sm:pt-36 sm:pb-28">
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="font-playfair text-5xl font-bold leading-[1.1] text-white sm:text-6xl md:text-7xl">
-            Seguros con asistencia
+          <span className="inline-block rounded-full border border-gold/30 px-4 py-1.5 text-xs font-medium tracking-wider text-gold uppercase">
+            Asesoramiento personal en seguros
+          </span>
+          <h1 className="mt-6 font-playfair text-4xl font-bold leading-[1.1] text-white sm:text-5xl md:text-6xl">
+            Seguros claros para
             <br />
-            personalizada 24/7
-            <br />
-            para ti y tu familia
+            proteger tus decisiones importantes
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80 sm:text-xl">
-            En Grupo Mora te ofrecemos un trato cercano, transparente y profesional.
-            Te ayudamos a elegir el seguro que mejor se adapta a tus necesidades.
+            {siteConfig.ownerName} te orienta para encontrar una opción adaptada
+            a tu situación, comprender sus coberturas y tomar una decisión
+            informada.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <CTAAdvice size="lg" className="!border-white !text-white hover:!bg-white hover:!text-navy" />
             <CTAWhatsApp size="lg" />
             <CTAAppointment size="lg" />
           </div>
+          <p className="mt-6 text-sm text-white/50">
+            {siteConfig.professionalStatus} &middot; DGSFP {siteConfig.dgsfpCode}
+          </p>
         </div>
       </div>
     </section>

@@ -5,6 +5,7 @@ import TrustBlock from "@/components/home/TrustBlock";
 import CTASection from "@/components/home/CTASection";
 import ContactForm from "@/components/shared/ContactForm";
 import SectionWrapper from "@/components/shared/SectionWrapper";
+import { siteConfig } from "@/lib/site-config";
 import Link from "next/link";
 import { ArrowRight, GraduationCap } from "lucide-react";
 
@@ -13,20 +14,20 @@ export default function HomePage() {
     <>
       <HeroHome />
 
-      {/* Cómo funciona */}
-      <SectionWrapper background="white">
-        <HowItWorks />
+      {/* Trust Strip */}
+      <SectionWrapper background="light">
+        <TrustBlock />
       </SectionWrapper>
 
       {/* Nuestros seguros */}
-      <SectionWrapper background="light" id="servicios">
+      <SectionWrapper background="white" id="servicios">
         <div className="text-center">
           <h2 className="font-playfair text-3xl font-bold text-navy sm:text-4xl md:text-5xl">
-            Nuestros seguros
+            ¿Qué necesitas resolver?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-dark/70">
-            Te ofrecemos soluciones de protección diseñadas para cuidar de ti y
-            de tu familia en cada etapa de la vida.
+            Situaciones para las que {siteConfig.ownerName} puede orientarte
+            sobre las opciones disponibles.
           </p>
         </div>
         <div className="mt-12">
@@ -34,12 +35,12 @@ export default function HomePage() {
         </div>
       </SectionWrapper>
 
-      {/* Confianza */}
-      <SectionWrapper background="white" id="confianza">
-        <TrustBlock />
+      {/* Cómo funciona */}
+      <SectionWrapper background="light" id="como-funciona">
+        <HowItWorks />
       </SectionWrapper>
 
-      {/* Nuevo servicio destacado */}
+      {/* Soluciones internacionales */}
       <SectionWrapper background="white" id="estudiantes">
         <Link
           href="/estudiantes-internacionales"
@@ -51,14 +52,15 @@ export default function HomePage() {
             </div>
             <div className="flex-1">
               <span className="inline-block rounded-full bg-gold/20 px-3 py-1 text-xs font-semibold text-gold-dark mb-3">
-                Nuevo servicio
+                Solución internacional
               </span>
               <h3 className="font-playfair text-2xl font-bold text-navy sm:text-3xl">
-                Seguro para estudiantes internacionales
+                Llegar a España con la documentación bien preparada
               </h3>
               <p className="mt-2 text-gray-dark/70">
-                ¿Vienes a estudiar a España? Necesitas un seguro de salud homologado
-                para tu visado o residencia. Te lo gestionamos de forma rápida y personalizada.
+                Karoline te orienta sobre seguros médicos destinados a estudiantes
+                y residentes internacionales. Los requisitos pueden variar según
+                el trámite, el consulado y la situación personal.
               </p>
               <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-navy transition-all group-hover:text-gold group-hover:gap-2">
                 Más información →
@@ -68,7 +70,42 @@ export default function HomePage() {
         </Link>
       </SectionWrapper>
 
-      {/* CTA final oscuro */}
+      {/* Sobre Karoline */}
+      <SectionWrapper background="light" id="sobre-karoline">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="font-playfair text-3xl font-bold text-navy sm:text-4xl md:text-5xl">
+            Una persona real al otro lado
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-dark/70">
+            Grupo Mora Seguros nace como la marca profesional de Karoline Mora,
+            agente de seguros exclusivo de ASISA. Su trabajo consiste en escuchar
+            cada caso, explicar las alternativas disponibles y acompañar al
+            cliente durante el proceso de contratación.
+          </p>
+          <div className="mt-8 inline-flex flex-wrap items-center justify-center gap-3">
+            <span className="rounded-full bg-navy/5 px-4 py-2 text-sm text-navy/80">
+              NIF {siteConfig.ownerNif}
+            </span>
+            <span className="rounded-full bg-navy/5 px-4 py-2 text-sm text-navy/80">
+              DGSFP {siteConfig.dgsfpCode}
+            </span>
+            <span className="rounded-full bg-navy/5 px-4 py-2 text-sm text-navy/80">
+              {siteConfig.professionalAddress}
+            </span>
+          </div>
+          <div className="mt-8">
+            <Link
+              href="/quienes-somos"
+              className="btn-outline-navy h-12 px-6"
+            >
+              Conocer más sobre Karoline
+              <ArrowRight className="h-5 w-5" aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </SectionWrapper>
+
+      {/* CTA final */}
       <SectionWrapper background="navy" id="cta-final">
         <CTASection />
       </SectionWrapper>

@@ -44,13 +44,14 @@ export default function Navbar() {
     { label: "Contacto", href: "/contacto" },
   ];
 
+  // Simplified top bar - only visible on xl screens
   return (
     <>
-      {/* Top bar - desktop only */}
-      <div className="hidden md:block bg-asisa-blue">
-        <div className="mx-auto flex h-8 max-w-6xl items-center justify-between px-6">
-          <p className="text-[11px] font-medium text-white/90 tracking-wide">
-            Karoline Mora · Agente de seguros exclusivo de ASISA · DGSFP {siteConfig.dgsfpCode}
+      {/* Top bar - reduced, only shown on xl+ */}
+      <div className="hidden xl:block bg-asisa-blue">
+        <div className="mx-auto flex h-7 max-w-7xl items-center px-6">
+          <p className="text-[10px] font-medium text-white/80 tracking-wide">
+            Karoline Mora · {siteConfig.professionalStatus} · DGSFP {siteConfig.dgsfpCode}
           </p>
         </div>
       </div>
@@ -63,14 +64,14 @@ export default function Navbar() {
         )}
       >
         <nav
-          className="mx-auto flex h-[72px] max-w-6xl items-center justify-between px-6 md:h-[88px]"
+          className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-6 xl:h-[88px]"
           aria-label="Navegación principal"
         >
           {/* Brand */}
           <BrandLockup />
 
-          {/* Desktop nav - show only when enough space (1536px+) */}
-          <div className="hidden items-center gap-1 2xl:flex">
+          {/* Desktop nav - inline from xl (1280px+) */}
+          <div className="hidden items-center gap-0.5 xl:flex">
             {navItems.map((item) => {
               const isActive = pathname === item.href;
               return (
@@ -78,7 +79,7 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "rounded-lg px-3.5 py-2 text-sm font-medium transition-colors",
+                    "rounded-lg px-2.5 py-2 text-sm font-medium transition-colors",
                     isActive
                       ? "bg-asisa-blue-light text-asisa-blue"
                       : "text-text-secondary hover:bg-surface-soft hover:text-text-primary"
@@ -89,30 +90,30 @@ export default function Navbar() {
                 </Link>
               );
             })}
-            {/* Instagram subtle icon */}
+            {/* Instagram - icon only */}
             <a
               href="https://www.instagram.com/grupomoraseguros/"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-1 flex h-9 w-9 items-center justify-center rounded-lg text-text-secondary transition-colors hover:bg-pink-50 hover:text-pink-600"
+              className="ml-0.5 flex h-8 w-8 items-center justify-center rounded-lg text-text-secondary/60 transition-colors hover:bg-pink-50 hover:text-pink-600"
               aria-label="Instagram @grupomoraseguros"
             >
-              <Instagram className="h-4 w-4" aria-hidden="true" />
+              <Instagram className="h-3.5 w-3.5" aria-hidden="true" />
             </a>
             {/* CTA principal */}
             <Link
               href="/contacto"
-              className="btn-primary ml-2 h-10 px-5 text-sm"
+              className="btn-primary ml-1.5 h-9 px-4 text-xs"
               aria-label="Hablar con Karoline"
             >
               Hablar con Karoline
             </Link>
           </div>
 
-          {/* Mobile hamburger - show until 1535px */}
+          {/* Mobile hamburger - show below xl */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="flex h-10 w-10 items-center justify-center rounded-lg text-text-primary hover:bg-surface-soft 2xl:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-lg text-text-primary hover:bg-surface-soft xl:hidden"
             aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={isOpen}
           >
@@ -124,7 +125,7 @@ export default function Navbar() {
       {/* Mobile Drawer */}
       {isOpen && (
         <div
-          className="fixed inset-0 top-[72px] z-40 flex flex-col bg-white 2xl:hidden"
+          className="fixed inset-0 top-[72px] z-40 flex flex-col bg-white xl:hidden"
           role="dialog"
           aria-modal="true"
           aria-label="Menú de navegación"

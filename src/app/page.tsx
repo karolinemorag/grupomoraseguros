@@ -1,7 +1,7 @@
 import HeroHome from "@/components/home/HeroHome";
 import TrustStrip from "@/components/home/TrustStrip";
-import HowItWorks from "@/components/home/HowItWorks";
-import ServicesGrid from "@/components/home/ServicesGrid";
+import NeedsNavigator from "@/components/home/NeedsNavigator";
+import AdvisoryProcess from "@/components/home/AdvisoryProcess";
 import CTASection from "@/components/home/CTASection";
 import ContactForm from "@/components/shared/ContactForm";
 import SectionWrapper from "@/components/shared/SectionWrapper";
@@ -17,26 +17,11 @@ export default function HomePage() {
       {/* Trust Strip */}
       <TrustStrip />
 
-      {/* Nuestros seguros */}
-      <SectionWrapper background="white" id="servicios">
-        <div className="text-center">
-          <h2 className="font-playfair text-3xl font-bold text-navy sm:text-4xl md:text-5xl">
-            ¿Qué necesitas resolver?
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-dark/70">
-            Situaciones para las que {siteConfig.ownerName} puede orientarte
-            sobre las opciones disponibles.
-          </p>
-        </div>
-        <div className="mt-12">
-          <ServicesGrid />
-        </div>
-      </SectionWrapper>
+      {/* Navegador de necesidades */}
+      <NeedsNavigator />
 
-      {/* Cómo funciona */}
-      <SectionWrapper background="light" id="como-funciona">
-        <HowItWorks />
-      </SectionWrapper>
+      {/* Proceso de atención */}
+      <AdvisoryProcess />
 
       {/* Soluciones internacionales */}
       <SectionWrapper background="white" id="estudiantes">

@@ -57,7 +57,7 @@ export default function HeroHome() {
 
           {/* Right column - Editorial image (45%) */}
           <div className="relative w-full md:w-[45%] md:self-stretch">
-            <div className="relative h-full min-h-[400px] overflow-hidden rounded-2xl md:rounded-none md:rounded-bl-[40px]">
+            <div className="relative h-full min-h-[400px] overflow-hidden rounded-2xl md:rounded-bl-2xl">
               <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{
@@ -66,8 +66,6 @@ export default function HeroHome() {
                 }}
                 aria-hidden="true"
               />
-              {/* Decorative gold corner */}
-              <div className="absolute bottom-0 right-0 h-24 w-24 bg-mora-gold/20" aria-hidden="true" />
             </div>
           </div>
         </div>

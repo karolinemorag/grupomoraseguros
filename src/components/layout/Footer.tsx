@@ -29,15 +29,18 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-4">
           {/* Logo & Description */}
           <div className="md:col-span-1">
-            <Link href="/" className="inline-flex">
-              <Image
-                src="/logo-grupo-mora.jpg"
-                alt="Grupo Mora - Agencia exclusiva de seguros"
-                width={220}
-                height={56}
-                className="h-[56px] w-auto object-contain drop-shadow-md"
-              />
-            </Link>
+            <Image
+              src="/logo-grupo-mora.jpg"
+              alt="Grupo Mora Seguros"
+              width={200}
+              height={50}
+              className="h-[50px] w-auto object-contain brightness-0 invert"
+            />
+            <div className="mt-3 text-xs text-white/60 leading-relaxed">
+              <span className="font-medium text-gold">Agente exclusiva de ASISA</span>
+              <br />
+              DGSFP {siteConfig.dgsfpCode}
+            </div>
           </div>
 
           {/* Contact */}

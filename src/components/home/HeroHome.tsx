@@ -1,58 +1,75 @@
 "use client";
 
-import { CTAWhatsApp } from "@/components/shared/CTAButtons";
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 
 export default function HeroHome() {
+  const whatsappUrl = `https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, "")}`;
+
   return (
-    <section
-      className="relative flex min-h-[90vh] items-center overflow-hidden"
-      aria-label="Hero principal"
-    >
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage:
-            'url("https://images.unsplash.com/photo-1534536281715-e28d76689b0e?q=80&w=2070&auto=format&fit=crop")',
-        }}
-        aria-hidden="true"
-      />
-
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-[#0F1F3D]/85" aria-hidden="true" />
-
-      {/* Content */}
-      <div className="container-section relative z-10 w-full pt-28 pb-20 sm:pt-36 sm:pb-28">
-        <div className="mx-auto max-w-4xl text-center">
-          <span className="inline-block rounded-full border border-gold/30 px-4 py-1.5 text-xs font-medium tracking-wider text-gold uppercase">
-            Asesoramiento personal en seguros
-          </span>
-          <h1 className="mt-6 font-playfair text-4xl font-bold leading-[1.1] text-white sm:text-5xl md:text-6xl">
-            Seguros claros para
-            <br />
-            proteger tus decisiones importantes
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80 sm:text-xl">
-            {siteConfig.ownerName} te ofrece atención directa para entender tus
-            opciones, revisar las condiciones y encontrar una alternativa
-            adaptada a tu situación.
-          </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <CTAWhatsApp size="lg" />
-            <Link
-              href="/seguros"
-              className="btn-outline-white h-12 px-8 text-sm"
-            >
-              Explorar seguros
-              <ArrowRight className="h-5 w-5" aria-hidden="true" />
-            </Link>
+    <section className="relative overflow-hidden bg-white" aria-label="Hero principal">
+      <div className="container-section">
+        <div className="flex min-h-[620px] flex-col items-center gap-12 py-20 md:flex-row md:py-0">
+          {/* Left column - Text (55%) */}
+          <div className="w-full max-w-xl md:w-[55%] md:py-24">
+            <span className="eyebrow">ASESORAMIENTO PERSONAL EN SEGUROS</span>
+            <h1 className="mt-6 text-display-xl text-text-primary">
+              Seguros claros para proteger tus decisiones importantes.
+            </h1>
+            <p className="mt-6 text-body-lg text-text-secondary leading-relaxed max-w-lg">
+              {siteConfig.ownerName} te ayuda a entender las opciones disponibles,
+              revisar las condiciones y encontrar una alternativa adaptada a tu
+              situación.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary h-12 px-7 text-sm"
+                aria-label="Hablar por WhatsApp con Karoline"
+              >
+                <MessageCircle className="h-5 w-5" aria-hidden="true" />
+                Hablar por WhatsApp
+              </a>
+              <Link
+                href="/seguros"
+                className="btn-outline h-12 px-7 text-sm"
+              >
+                Explorar seguros
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
+            {/* Professional seal */}
+            <div className="mt-10 border-l-2 border-mora-gold pl-4">
+              <p className="text-sm font-medium text-text-primary">
+                {siteConfig.ownerName}
+              </p>
+              <p className="text-xs text-text-secondary">
+                {siteConfig.professionalStatus}
+              </p>
+              <p className="text-xs text-text-secondary/70">
+                DGSFP {siteConfig.dgsfpCode}
+              </p>
+            </div>
           </div>
-          <p className="mt-6 text-sm text-white/50">
-            {siteConfig.professionalStatus} &middot; DGSFP {siteConfig.dgsfpCode}
-          </p>
+
+          {/* Right column - Editorial image (45%) */}
+          <div className="relative w-full md:w-[45%] md:self-stretch">
+            <div className="relative h-full min-h-[400px] overflow-hidden rounded-2xl md:rounded-none md:rounded-bl-[40px]">
+              <div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                style={{
+                  backgroundImage:
+                    'url("https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop")',
+                }}
+                aria-hidden="true"
+              />
+              {/* Decorative gold corner */}
+              <div className="absolute bottom-0 right-0 h-24 w-24 bg-mora-gold/20" aria-hidden="true" />
+            </div>
+          </div>
         </div>
       </div>
     </section>

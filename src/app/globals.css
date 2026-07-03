@@ -4,8 +4,17 @@
 
 @layer base {
   :root {
-    --font-playfair: "Playfair Display", serif;
-    --font-inter: "Inter", sans-serif;
+    --asisa-blue: #004A97;
+    --asisa-blue-dark: #00366F;
+    --asisa-blue-light: #E7F1FA;
+    --mora-navy: #071A2D;
+    --mora-gold: #B69A5C;
+    --mora-gold-soft: #D8C79C;
+    --surface-soft: #F5F8FB;
+    --surface-warm: #F8F6F1;
+    --text-primary: #102235;
+    --text-secondary: #586878;
+    --border-soft: #DCE4EB;
   }
 
   html {
@@ -13,41 +22,53 @@
   }
 
   body {
-    @apply font-inter text-gray-dark antialiased;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-playfair text-navy;
+    @apply font-body text-text-primary antialiased;
   }
 }
 
 @layer components {
+  .container-section {
+    @apply mx-auto max-w-6xl px-6;
+  }
+
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 text-sm font-medium shadow-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-2 rounded-[10px] px-6 py-3 text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
   }
 
-  .btn-navy {
-    @apply btn bg-navy text-white hover:bg-navy-light hover:shadow-lg focus:ring-navy;
+  .btn-primary {
+    @apply btn bg-asisa-blue text-white hover:bg-asisa-blue-dark focus:ring-asisa-blue;
   }
 
-  .btn-gold {
-    @apply btn bg-[#C9A84C] text-white hover:bg-gold-dark hover:shadow-lg focus:ring-gold;
+  .btn-outline {
+    @apply btn border-2 border-asisa-blue text-asisa-blue hover:bg-asisa-blue hover:text-white focus:ring-asisa-blue;
+  }
+
+  .btn-ghost {
+    @apply btn text-text-secondary hover:bg-surface-soft hover:text-text-primary focus:ring-asisa-blue;
   }
 
   .btn-trust {
     @apply btn bg-[#25D366] text-white hover:bg-[#1DA851] hover:shadow-lg focus:ring-[#25D366];
   }
 
+  .btn-gold {
+    @apply btn bg-[#C9A84C] text-white hover:bg-[#A8863A] hover:shadow-lg focus:ring-[#C9A84C];
+  }
+
+  .btn-navy {
+    @apply btn bg-[#1B2D4F] text-white hover:bg-[#2A3F6F] hover:shadow-lg focus:ring-[#1B2D4F];
+  }
+
   .btn-outline-navy {
-    @apply btn border-2 border-navy text-navy hover:bg-navy hover:text-white hover:shadow-lg focus:ring-navy;
+    @apply btn border-2 border-[#1B2D4F] text-[#1B2D4F] hover:bg-[#1B2D4F] hover:text-white focus:ring-[#1B2D4F];
   }
 
   .btn-outline-white {
-    @apply btn border-2 border-white text-white hover:bg-white hover:text-navy hover:shadow-lg focus:ring-white;
+    @apply btn border-2 border-white text-white hover:bg-white hover:text-navy focus:ring-white;
   }
 
-  .container-section {
-    @apply mx-auto max-w-6xl px-6;
+  .eyebrow {
+    @apply inline-block text-[11px] font-semibold uppercase tracking-[0.15em] text-text-secondary;
   }
 }
 
@@ -63,25 +84,3 @@
 ::-webkit-scrollbar-thumb {
   @apply rounded-full bg-navy/30 hover:bg-navy/50;
 }
-
-/* Fade in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.5s ease-out forwards;
-}
-
-/* Delay utils */
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-400 { animation-delay: 400ms; }

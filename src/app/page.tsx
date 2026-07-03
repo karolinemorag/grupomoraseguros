@@ -1,7 +1,7 @@
 import HeroHome from "@/components/home/HeroHome";
+import TrustStrip from "@/components/home/TrustStrip";
 import HowItWorks from "@/components/home/HowItWorks";
 import ServicesGrid from "@/components/home/ServicesGrid";
-import TrustBlock from "@/components/home/TrustBlock";
 import CTASection from "@/components/home/CTASection";
 import ContactForm from "@/components/shared/ContactForm";
 import SectionWrapper from "@/components/shared/SectionWrapper";
@@ -15,9 +15,7 @@ export default function HomePage() {
       <HeroHome />
 
       {/* Trust Strip */}
-      <SectionWrapper background="light">
-        <TrustBlock />
-      </SectionWrapper>
+      <TrustStrip />
 
       {/* Nuestros seguros */}
       <SectionWrapper background="white" id="servicios">

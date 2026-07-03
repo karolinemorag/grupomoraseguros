@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Manrope, Playfair_Display, Inter } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CTABar from "@/components/layout/CTABar";
 import CookieConsent from "@/components/shared/CookieConsent";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -53,8 +60,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="min-h-screen bg-white font-inter antialiased">
+    <html
+      lang="es"
+      className={`${manrope.variable} ${playfair.variable} ${inter.variable}`}
+    >
+      <body className="min-h-screen bg-white font-body antialiased">
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />
